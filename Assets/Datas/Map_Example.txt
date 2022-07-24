@@ -1,0 +1,37 @@
+//Country Name:
+Example Country
+===...===
+//Map Size:
+34
+22
+===...===
+//Layers(1-2):
+2
+===...===
+//Layer Name:
+State/CD
+===...===
+//Layer1Info:
+Name/Abbrv./CD/WTA/FLV/Pop/VTP/PVI/PollSZ/PollAVG/EPAVG/
+EPSPD/EPBTH/EPPCT/EPTRI/IPSPD/IPBTH/IPTRI/RD/RM
+---
+North Dakota/ND/1
+
+South Dakota/SD/1
+
+Nebraska/NE/3
+
+===...===
+//Layer2Info:
+Name/X/Y/FLV/Pop/VTP/PVI/PollSZ/PollAVG/EPAVG/
+EPSPD/EPBTH/EPPCT/EPTRI/IPSPD/IPBTH/IPTRI/RD/RM
+---
+ND-1/10/3
+
+SD-1/10/4
+
+NE-1/9/5
+
+NE-2/10/5
+
+NE-3/10/6
