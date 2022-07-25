@@ -22,7 +22,7 @@ Nebraska/NE/3
 
 ===...===
 //Layer2Info:
-Name/X/Y/FLV/Pop/VTP/PVI/PollSZ/
+Name/X/Y/FLV/QI/Pop/VTP/PVI/PollSZ/
 EPSPD/EPBTH/EPPCT/EPTRI/IPSPD/IPBTH/IPTRI/RD/RM
 ---
 ND-1/10/3/ND

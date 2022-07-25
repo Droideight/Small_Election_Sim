@@ -1,0 +1,27 @@
+//Candidate List Name:
+Example List
+===...===
+//Party Info
+ID/Name/Abbrv./People/Color
+001/Republican Party/R/Republican/#FF0000
+002/Democratic Party/D/Democrat/#0047AB
+003/Libertarian Party/L/Libertarian/#FFFF00
+004/Green Party/G/Green/#00FF00
+005/Independent/I/Independent/#FFFFFF
+999/Others/O/Others/#F5F5F5
+===...===
+//Candidate Info
+Name/PartyID/Layer(0~2)
+FirstLayer/SubLayer/POLLPCT/EVPCT/QUALITY/INVESTMENT/ENTHUSIASM
+---
+John Hoeven/001/1
+ND/ND-01/70.8/46.3/66/71/65
+---
+Katrina Christiansen/002/1
+ND/ND-01/27.5/54.1/62/68/60
+------
+Kelly Armstrong/001/2
+ND/ND-01/69.0/45.1/70/70/73
+---
+Mark Haugen/002/2
+ND/ND-01/28.4/52.5/68/66/64
