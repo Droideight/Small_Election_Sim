@@ -21,7 +21,7 @@ public class ShowMap : MonoBehaviour
     {
         string filePath;
         string[] lines = new string[10000];
-        filePath = script.FilePath;
+        filePath = script.MapFilePath;
         lines = File.ReadAllLines(filePath);
         string[] DName = new string[10000];
         int[] DX = new int[10000];

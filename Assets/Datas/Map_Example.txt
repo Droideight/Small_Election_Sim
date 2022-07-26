@@ -14,23 +14,24 @@ State/CD
 //Layer1Info:
 Name/Abbrv./CD/WTA
 ---
-North Dakota/ND/1
+North Dakota/ND/1/1
 
-South Dakota/SD/1
+South Dakota/SD/1/1
 
-Nebraska/NE/3
+Nebraska/NE/3/0
 
 ===...===
 //Layer2Info:
-Name/X/Y/FLV/QI/Pop/VTP/PVI/PollSZ/
+Name/X/Y/FLV/QI/Pop/VTP/PVI/PollSZ
 EPSPD/EPBTH/EPPCT/EPTRI/IPSPD/IPBTH/IPTRI/RD/RM
 ---
-ND-1/10/3/ND
-
-SD-1/10/4/SD
-
-NE-1/9/5/NE
-
-NE-2/10/5/NE
-
-NE-3/10/6/NE
+ND-1/10/3/ND/1/1/1/1/1
+1/1/1/1/1/1/1/1/1
+SD-1/10/4/SD/1/1/1/1/1
+1/1/1/1/1/1/1/1/1
+NE-1/9/5/NE/1/1/1/1/1
+1/1/1/1/1/1/1/1/1
+NE-2/10/5/NE/1/1/1/1/1
+1/1/1/1/1/1/1/1/1
+NE-3/10/6/NE/1/1/1/1/1
+1/1/1/1/1/1/1/1/1

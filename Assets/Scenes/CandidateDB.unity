@@ -344,6 +344,8 @@ GameObject:
   - component: {fileID: 25277178}
   - component: {fileID: 25277177}
   - component: {fileID: 25277176}
+  - component: {fileID: 25277180}
+  - component: {fileID: 25277179}
   m_Layer: 5
   m_Name: FirstLevel
   m_TagString: Untagged
@@ -427,7 +429,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 25277179}
+        m_TargetAssemblyTypeName: DBScaleChange, Assembly-CSharp
+        m_MethodName: setViewFLVByChoose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &25277177
 MonoBehaviour:
@@ -467,6 +481,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 25277174}
   m_CullTransparentMesh: 1
+--- !u!114 &25277179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25277174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5768807c8d3f30c4baffd67ab7bf9088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewscale: 
+  viewFLV: 0
+  viewSLV: 0
+  Label: {fileID: 1875532788}
+  EnableOptions: {fileID: 112754276}
+  Me: {fileID: 25277174}
+  FirstDropdown: {fileID: 429851787}
+  SecondDropdown: {fileID: 25277174}
+  ThirdDropdown: {fileID: 112754276}
+  Script1: {fileID: 25277180}
+--- !u!114 &25277180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25277174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c090a3f5687484f98da1a4dd5dabc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SDS: {fileID: 0}
 --- !u!1 &42313612
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,6 +768,8 @@ GameObject:
   - component: {fileID: 112754280}
   - component: {fileID: 112754279}
   - component: {fileID: 112754278}
+  - component: {fileID: 112754282}
+  - component: {fileID: 112754281}
   m_Layer: 5
   m_Name: SecondLevel
   m_TagString: Untagged
@@ -802,7 +853,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 112754281}
+        m_TargetAssemblyTypeName: DBScaleChange, Assembly-CSharp
+        m_MethodName: setViewSLVByChoose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &112754279
 MonoBehaviour:
@@ -842,6 +905,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112754276}
   m_CullTransparentMesh: 1
+--- !u!114 &112754281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112754276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5768807c8d3f30c4baffd67ab7bf9088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewscale: 
+  viewFLV: 0
+  viewSLV: 0
+  Label: {fileID: 2114942370}
+  EnableOptions: {fileID: 0}
+  Me: {fileID: 112754276}
+  FirstDropdown: {fileID: 429851787}
+  SecondDropdown: {fileID: 25277174}
+  ThirdDropdown: {fileID: 112754276}
+  Script1: {fileID: 112754282}
+--- !u!114 &112754282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112754276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c090a3f5687484f98da1a4dd5dabc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SDS: {fileID: 0}
 --- !u!1 &122142462
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,7 +1181,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -724.6891, y: 0}
+  m_AnchoredPosition: {x: -724.68823, y: -0.00032650438}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &168114386
@@ -1731,6 +1829,8 @@ GameObject:
   - component: {fileID: 429851791}
   - component: {fileID: 429851790}
   - component: {fileID: 429851789}
+  - component: {fileID: 429851792}
+  - component: {fileID: 429851793}
   m_Layer: 5
   m_Name: ViewLevel
   m_TagString: Untagged
@@ -1812,9 +1912,23 @@ MonoBehaviour:
     m_Options:
     - m_Text: National
       m_Image: {fileID: 0}
+    - m_Text: Test
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 429851792}
+        m_TargetAssemblyTypeName: DBScaleChange, Assembly-CSharp
+        m_MethodName: setViewScaleByChoose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &429851790
 MonoBehaviour:
@@ -1854,6 +1968,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429851787}
   m_CullTransparentMesh: 1
+--- !u!114 &429851792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429851787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5768807c8d3f30c4baffd67ab7bf9088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewscale: 
+  viewFLV: 0
+  viewSLV: 0
+  Label: {fileID: 881164020}
+  EnableOptions: {fileID: 25277174}
+  Me: {fileID: 429851787}
+  FirstDropdown: {fileID: 429851787}
+  SecondDropdown: {fileID: 25277174}
+  ThirdDropdown: {fileID: 112754276}
+  Script1: {fileID: 429851793}
+--- !u!114 &429851793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429851787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c090a3f5687484f98da1a4dd5dabc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SDS: {fileID: 0}
 --- !u!1 &434080510
 GameObject:
   m_ObjectHideFlags: 0
@@ -2672,6 +2821,7 @@ GameObject:
   m_Component:
   - component: {fileID: 651394984}
   - component: {fileID: 651394983}
+  - component: {fileID: 651394985}
   m_Layer: 0
   m_Name: DataShower
   m_TagString: Untagged
@@ -2694,6 +2844,8 @@ MonoBehaviour:
   DataLane: {fileID: 4923299510672384695, guid: fc9359a0e42288b498afad4755470cbe, type: 3}
   Header: {fileID: 1196889180}
   Parent: {fileID: 168114384}
+  Temp: []
+  SC: {fileID: 0}
 --- !u!4 &651394984
 Transform:
   m_ObjectHideFlags: 0
@@ -2708,6 +2860,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &651394985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651394982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c090a3f5687484f98da1a4dd5dabc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SDS: {fileID: 0}
 --- !u!1 &671289206
 GameObject:
   m_ObjectHideFlags: 0
@@ -5157,8 +5322,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.6599731, y: -128.79074}
-  m_SizeDelta: {x: -153.5, y: -417.5815}
+  m_AnchoredPosition: {x: 2.6599731, y: -137.94}
+  m_SizeDelta: {x: -153.5, y: -399.51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1265921366
 MonoBehaviour:
@@ -6864,8 +7029,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 892142823}
   m_HandleRect: {fileID: 892142822}
   m_Direction: 0
-  m_Value: 0.0008816614
-  m_Size: 0.9995703
+  m_Value: -0.00029382957
+  m_Size: 0.99957025
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7707,7 +7872,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

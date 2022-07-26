@@ -7,7 +7,13 @@ using System.Collections.ObjectModel;
 
 public class SetupData : MonoBehaviour
 {
-    GENERAL Save1 = new GENERAL();
+    public GENERAL Save1 = new GENERAL();
+    public static List<SECLV> SECONDLVs = new List<SECLV>();
+    public static List<FIRSTLV> FIRSTLVs = new List<FIRSTLV>();
+    public List<Candidate> Candidates = new List<Candidate>();
+    public List<Party> Parties = new List<Party>(); //includes "others"
+    public Setting_Data_Shower SDS;
+
     public void LoadMapSetup(string filepath)
     {
         string[] lines = new string[10000];
@@ -16,7 +22,9 @@ public class SetupData : MonoBehaviour
         Save1.MapX = Convert.ToInt32(lines[4]);
         Save1.MapY = Convert.ToInt32(lines[5]);
         Save1.Layers = Convert.ToInt32(lines[8]);
-        Save1.LayerList = lines[11].Split('/');
+        Debug.Log(lines[11]);
+        GENERAL.LayerList = lines[11].Split('/');
+        Debug.Log(GENERAL.LayerList[1]);
         for (int i = 13; i <= 10000; i++)
         {
             if (lines[i].ToString() == "===...===")
@@ -26,9 +34,9 @@ public class SetupData : MonoBehaviour
                 i = 10000;
             }
         }
-        Save1.L2 = lines.Length - 22 - Save1.L1;
+        Save1.L2 = lines.Length - 21 - 2*Save1.L1;
         Save1.L2 /= 2;
-        List<SECLV> SECONDLVs = new List<SECLV>();
+
         for (int i = 21 + 2 * (Save1.L1); i < 21 + 2 * (Save1.L1 + Save1.L2); i = i + 2)
         {
             string[] temp1;
@@ -76,7 +84,7 @@ public class SetupData : MonoBehaviour
                 RandomMagnitude = Convert.ToDouble(RM)
             }) ; 
         }
-        List<FIRSTLV> FIRSTLVs = new List<FIRSTLV>();
+
         for (int i = 16; i < 16 + 2 * (Save1.L1); i = i + 2)
         {
             string[] temp;
@@ -109,7 +117,7 @@ public class SetupData : MonoBehaviour
         }
         Save1.CandidateQTY = lines.Length - 10 - Save1.PartyQTY;
         Save1.CandidateQTY /= 3;
-        List<Candidate> Candidates = new List<Candidate>();
+
         for (int i = 10+ Save1.PartyQTY; i < 10 + Save1.PartyQTY + 3*(Save1.CandidateQTY); i = i + 3)
         {
             string[] temp2;
@@ -141,7 +149,7 @@ public class SetupData : MonoBehaviour
             }
             );
         }
-        List<Party> Parties = new List<Party>(); //includes "others"
+
         for (int i = 5; i < 6 + Save1.PartyQTY; i++)
         {
             string[] temp;
@@ -162,10 +170,16 @@ public class SetupData : MonoBehaviour
             );
         }
     }
+    public void GameOpenSetup()
+    {
+        LoadMapSetup(Save1.MapFilePath);
+        LoadCandidate(Save1.CandidateFilePath);
+        SDS.MapOptionSet();
+    }
 }
 public class SECLV
     {
-    public string Name;
+    public new string Name;
     public int X;
     public int Y;
     public string FIRSTLV;
@@ -187,7 +201,7 @@ public class SECLV
     }
 public class FIRSTLV
 {
-    public string Name;
+    public new string Name;
     public string abbrv;
     public double QualityImpact;
     public double Population;
@@ -230,12 +244,13 @@ public class Party
 }
 public class GENERAL
  {
-    public string FilePath = @"C:\Users\Pin\Desktop\Unity Election Simulator\Small_Election_Sim\Assets\Datas\Map_Example.txt";
+    public string MapFilePath = @"C:\Users\Pin\Desktop\Unity Election Simulator\Small_Election_Sim\Assets\Datas\Map_Example.txt";
+    public string CandidateFilePath = @"C:\Users\Pin\Desktop\Unity Election Simulator\Small_Election_Sim\Assets\Datas\Candidate_Example.txt";
     public string NationName;
     public int MapX;
     public int MapY;
     public int Layers;
-    public string[] LayerList = new string[2];
+    public static string[] LayerList = new string[2];
     public int L1;
     public int L2;
     public int CandidateQTY;
