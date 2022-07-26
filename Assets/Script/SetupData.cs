@@ -7,7 +7,6 @@ using System.Collections.ObjectModel;
 
 public class SetupData : MonoBehaviour
 {
-    public GENERAL Save1 = new GENERAL();
     public static List<SECLV> SECONDLVs = new List<SECLV>();
     public static List<FIRSTLV> FIRSTLVs = new List<FIRSTLV>();
     public List<Candidate> Candidates = new List<Candidate>();
@@ -18,26 +17,23 @@ public class SetupData : MonoBehaviour
     {
         string[] lines = new string[10000];
         lines = File.ReadAllLines(filepath);
-        Save1.NationName = lines[1];
-        Save1.MapX = Convert.ToInt32(lines[4]);
-        Save1.MapY = Convert.ToInt32(lines[5]);
-        Save1.Layers = Convert.ToInt32(lines[8]);
-        Debug.Log(lines[11]);
+        GENERAL.NationName = lines[1];
+        GENERAL.MapX = Convert.ToInt32(lines[4]);
+        GENERAL.MapY = Convert.ToInt32(lines[5]);
+        GENERAL.Layers = Convert.ToInt32(lines[8]);
         GENERAL.LayerList = lines[11].Split('/');
-        Debug.Log(GENERAL.LayerList[1]);
         for (int i = 13; i <= 10000; i++)
         {
             if (lines[i].ToString() == "===...===")
             {
-                Save1.L1 = i - 16;
-                Save1.L1 /= 2;
+                GENERAL.L1 = i - 16;
+                GENERAL.L1 /= 2;
                 i = 10000;
             }
         }
-        Save1.L2 = lines.Length - 21 - 2*Save1.L1;
-        Save1.L2 /= 2;
-
-        for (int i = 21 + 2 * (Save1.L1); i < 21 + 2 * (Save1.L1 + Save1.L2); i = i + 2)
+        GENERAL.L2 = lines.Length - 21 - 2* GENERAL.L1;
+        GENERAL.L2 /= 2;
+        for (int i = 21 + 2 * (GENERAL.L1); i < 21 + 2 * (GENERAL.L1 + GENERAL.L2); i = i + 2)
         {
             string[] temp1;
             string[] temp2;
@@ -85,7 +81,7 @@ public class SetupData : MonoBehaviour
             }) ; 
         }
 
-        for (int i = 16; i < 16 + 2 * (Save1.L1); i = i + 2)
+        for (int i = 16; i < 16 + 2 * (GENERAL.L1); i = i + 2)
         {
             string[] temp;
             temp = lines[i].Split('/');
@@ -111,14 +107,14 @@ public class SetupData : MonoBehaviour
         {
             if (lines[i].ToString() == "===...===")
             {
-                Save1.PartyQTY = i - 6;
+                GENERAL.PartyQTY = i - 6;
                 i = 1000;
             }
         }
-        Save1.CandidateQTY = lines.Length - 10 - Save1.PartyQTY;
-        Save1.CandidateQTY /= 3;
+        GENERAL.CandidateQTY = lines.Length - 10 - GENERAL.PartyQTY;
+        GENERAL.CandidateQTY /= 3;
 
-        for (int i = 10+ Save1.PartyQTY; i < 10 + Save1.PartyQTY + 3*(Save1.CandidateQTY); i = i + 3)
+        for (int i = 10+ GENERAL.PartyQTY; i < 10 + GENERAL.PartyQTY + 3*(GENERAL.CandidateQTY); i = i + 3)
         {
             string[] temp2;
             string[] temp3;
@@ -150,7 +146,7 @@ public class SetupData : MonoBehaviour
             );
         }
 
-        for (int i = 5; i < 6 + Save1.PartyQTY; i++)
+        for (int i = 5; i < 6 + GENERAL.PartyQTY; i++)
         {
             string[] temp;
             temp = lines[i].Split('/');
@@ -172,8 +168,8 @@ public class SetupData : MonoBehaviour
     }
     public void GameOpenSetup()
     {
-        LoadMapSetup(Save1.MapFilePath);
-        LoadCandidate(Save1.CandidateFilePath);
+        LoadMapSetup(GENERAL.MapFilePath);
+        LoadCandidate(GENERAL.CandidateFilePath);
         SDS.MapOptionSet();
     }
 }
@@ -242,19 +238,19 @@ public class Party
     public string People;
     public string Color;
 }
-public class GENERAL
+public static class GENERAL
  {
-    public string MapFilePath = @"C:\Users\Pin\Desktop\Unity Election Simulator\Small_Election_Sim\Assets\Datas\Map_Example.txt";
-    public string CandidateFilePath = @"C:\Users\Pin\Desktop\Unity Election Simulator\Small_Election_Sim\Assets\Datas\Candidate_Example.txt";
-    public string NationName;
-    public int MapX;
-    public int MapY;
-    public int Layers;
+    public static string MapFilePath = @"C:\Users\Pin\Desktop\Unity Election Simulator\Small_Election_Sim\Assets\Datas\Map_Example.txt";
+    public static string CandidateFilePath = @"C:\Users\Pin\Desktop\Unity Election Simulator\Small_Election_Sim\Assets\Datas\Candidate_Example.txt";
+    public static string NationName;
+    public static int MapX;
+    public static int MapY;
+    public static int Layers;
     public static string[] LayerList = new string[2];
-    public int L1;
-    public int L2;
-    public int CandidateQTY;
-    public int PartyQTY; //Excluding "Other"
+    public static int L1;
+    public static int L2;
+    public static int CandidateQTY;
+    public static int PartyQTY; //Excluding "Other"
  }
 
 

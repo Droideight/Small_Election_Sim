@@ -13,7 +13,14 @@ public class Setting_Data_Shower : MonoBehaviour
 
     private void Start()
     {
-        SD.GameOpenSetup();
+        if (SetupData.FIRSTLVs.Count == 0) SD.GameOpenSetup();
+        else
+        {
+            MapOptionSet();
+            //VarietySeedSet();
+            //StartTimeSet();
+            //ElectionSpeedSet();
+        }
     }
     public void VarietySeedSet()
     {
@@ -29,6 +36,6 @@ public class Setting_Data_Shower : MonoBehaviour
     }
     public void MapOptionSet()
     {
-        MapOption.text = SD.Save1.MapX.ToString() + "x" + SD.Save1.MapY.ToString();
+        MapOption.text = GENERAL.MapX.ToString() + "x" + GENERAL.MapY.ToString();
     }
 }

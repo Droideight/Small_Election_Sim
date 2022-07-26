@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class ShowMap : MonoBehaviour
 {
-    public GENERAL script;
     [SerializeField] double canvax, canvay;
     [SerializeField] double distxcount, distycount;
     double per_x, per_y;
@@ -21,7 +20,7 @@ public class ShowMap : MonoBehaviour
     {
         string filePath;
         string[] lines = new string[10000];
-        filePath = script.MapFilePath;
+        filePath = GENERAL.MapFilePath;
         lines = File.ReadAllLines(filePath);
         string[] DName = new string[10000];
         int[] DX = new int[10000];
