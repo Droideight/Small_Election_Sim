@@ -18,7 +18,9 @@ public class DBScaleChange : MonoBehaviour
     public GameObject SecondDropdown; 
     public GameObject ThirdDropdown;
     List<string> m_DropOptions = new List<string> { "Choose One" };
+    public static List<Candidate> ShowData = new List<Candidate>();
     public SetupData Script1;
+    public ShowData SD;
 
     private void Update()
     {
@@ -31,34 +33,43 @@ public class DBScaleChange : MonoBehaviour
     public void setViewScaleByChoose()
     {
         setViewScale(Label.GetComponent<TMPro.TextMeshProUGUI>().text);
-        Debug.Log(viewscale);
         TMPro.TMP_Dropdown option = EnableOptions.GetComponent<TMPro.TMP_Dropdown>();
         TMPro.TMP_Dropdown third = ThirdDropdown.GetComponent<TMPro.TMP_Dropdown>();
         string C1 = GENERAL.LayerList[0];
         string C2 = GENERAL.LayerList[1];
-        if (viewscale == "National") { option.interactable = false; third.interactable = false; }
-            else if (viewscale == C1) { option.interactable = true; third.interactable = false; AddOptions(1); }
+        if (viewscale == "National") { option.interactable = false; third.interactable = false; LoadL0Candidate(); }
+        else if (viewscale == C1) { option.interactable = true; third.interactable = false; AddOptions(1); }
         else if (viewscale == C2) { option.interactable = true; third.interactable = false; AddOptions(1); }
     }
     public void setViewFLVByChoose()
     {
-        //Label.GetComponent<TMPro.TextMeshProUGUI>().text
         setViewScale(ScaleText.GetComponent<TMPro.TextMeshProUGUI>().text);
-        setViewFLV(0);
-        Debug.Log(viewscale);
+        foreach (FIRSTLV entity in SetupData.FIRSTLVs) 
+        { 
+        if (entity.Name == Label.GetComponent<TMPro.TextMeshProUGUI>().text) 
+            {
+                setViewFLV(SetupData.FIRSTLVs.IndexOf(entity));
+            }
+        }
         TMPro.TMP_Dropdown option = EnableOptions.GetComponent<TMPro.TMP_Dropdown>();
         TMPro.TMP_Dropdown third = ThirdDropdown.GetComponent<TMPro.TMP_Dropdown>();
         string C1 = GENERAL.LayerList[0];
         string C2 = GENERAL.LayerList[1];
-        if (viewscale == "National") { option.interactable = false; Debug.Log("SEE1"); }
-        else if (viewscale == C1) { option.interactable = false; Debug.Log("SEE2"); }
-        else if (viewscale == C2) { option.interactable = true; AddOptions(2); Debug.Log("SEE3"); }
+        if (viewscale == "National") { option.interactable = false; }
+        else if (viewscale == C1) { option.interactable = false; LoadL1Candidate(viewFLV); }
+        else if (viewscale == C2) { option.interactable = true; AddOptions(2);}
     }
     public void setViewSLVByChoose()
     {
-        //Label.GetComponent<TMPro.TextMeshProUGUI>().text
-        setViewScale(ScaleText.GetComponent<TMPro.TextMeshProUGUI>().text);
-        setViewSLV(0);
+        foreach (SECLV entity in SetupData.SECONDLVs)
+        {
+            if (entity.Name == Label.GetComponent<TMPro.TextMeshProUGUI>().text)
+            {
+                //if (entity.FIRSTLV == SetupData.FIRSTLVs[viewFLV].abbrv) 
+                setViewSLV(SetupData.SECONDLVs.IndexOf(entity));
+                LoadL2Candidate(viewSLV);
+            }
+        }
     }
     public void setViewScale(string scale)
     {
@@ -67,6 +78,7 @@ public class DBScaleChange : MonoBehaviour
     public void setViewFLV(int FLVID)
     {
         viewFLV = FLVID;
+        Debug.Log(FLVID);
     }
     public void setViewSLV(int SLVID)
     {
@@ -78,6 +90,7 @@ public class DBScaleChange : MonoBehaviour
         {
             case 0:
                 m_DropOptions.Clear();
+                m_DropOptions.Add("CHOOSE ONE");
                 m_DropOptions.Add("National");
                 m_DropOptions.Add(GENERAL.LayerList[0]);
                 m_DropOptions.Add(GENERAL.LayerList[1]);
@@ -87,6 +100,7 @@ public class DBScaleChange : MonoBehaviour
                 break;
             case 1:
                 m_DropOptions.Clear();
+                m_DropOptions.Add("CHOOSE ONE");
                 foreach (FIRSTLV target in SetupData.FIRSTLVs) { m_DropOptions.Add(target.Name); }
                 TMPro.TMP_Dropdown Twoself = SecondDropdown.GetComponent<TMPro.TMP_Dropdown>();
                 Twoself.ClearOptions();
@@ -94,7 +108,11 @@ public class DBScaleChange : MonoBehaviour
                 break;
             case 2:
                 m_DropOptions.Clear();
-                foreach (SECLV target in SetupData.SECONDLVs) { m_DropOptions.Add(target.Name); }
+                m_DropOptions.Add("CHOOSE ONE");
+                foreach (SECLV target in SetupData.SECONDLVs) 
+                { 
+                    if (target.FIRSTLV == SetupData.FIRSTLVs[viewFLV].abbrv){ m_DropOptions.Add(target.Name); }
+                }
                 TMPro.TMP_Dropdown Thirdself = ThirdDropdown.GetComponent<TMPro.TMP_Dropdown>();
                 Thirdself.ClearOptions();
                 Thirdself.AddOptions(m_DropOptions);
@@ -104,4 +122,21 @@ public class DBScaleChange : MonoBehaviour
         }
 
     }
+    public void LoadL0Candidate() { }
+    public void LoadL1Candidate(int FLV) 
+    {
+        
+    }
+    public void LoadL2Candidate(int SLV) 
+    {
+        SD.DestroyDataLane();
+        ShowData.Clear();
+        foreach (Candidate people in SetupData.Candidates) 
+        {
+            if (people.SLayer == SetupData.SECONDLVs[SLV].Name) { ShowData.Add(people); }
+        }
+        SD.GenerateDataLane(ShowData.Count);
+        SD.ShowLaneInfo();
+    }
+
 }

@@ -9,9 +9,10 @@ public class SetupData : MonoBehaviour
 {
     public static List<SECLV> SECONDLVs = new List<SECLV>();
     public static List<FIRSTLV> FIRSTLVs = new List<FIRSTLV>();
-    public List<Candidate> Candidates = new List<Candidate>();
-    public List<Party> Parties = new List<Party>(); //includes "others"
+    public static List<Candidate> Candidates = new List<Candidate>();
+    public static List<Party> Parties = new List<Party>(); //includes "others"
     public Setting_Data_Shower SDS;
+
 
     public void LoadMapSetup(string filepath)
     {

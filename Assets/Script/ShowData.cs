@@ -10,15 +10,30 @@ public class ShowData : MonoBehaviour
     public GameObject Parent;
     public Component[] Temp;
     public SetupData SC;
-    List<GameObject> SpawnedLanes;
+    public static List<GameObject> SpawnedLanes = new List<GameObject>();
 
     public void GenerateDataLane(int lanes)
     {
         for (int i = 1; i<= lanes; i++) 
         {
             GameObject NewLane = Instantiate(DataLane, new Vector3(Header.transform.position.x, Header.transform.position.y, Header.transform.position.z), Quaternion.identity, Parent.transform);
-            NewLane.name = "Lane" + i;
-            Transform LaneMade = NewLane.transform;
+            SpawnedLanes.Add(NewLane);
+        }
+    }
+    public void DestroyDataLane()
+    {
+        foreach (GameObject Item in SpawnedLanes)
+        {
+            Destroy(Item);
+            SpawnedLanes.Remove(Item);
+        }
+    }
+    public void ShowLaneInfo()
+    {
+        int count = 0;
+        foreach (GameObject Lane in SpawnedLanes)
+        {
+            Transform LaneMade = Lane.transform;
             Transform Name = LaneMade.GetChild(0);
             Transform Party = LaneMade.GetChild(2);
             Transform Race = LaneMade.GetChild(4);
@@ -29,8 +44,9 @@ public class ShowData : MonoBehaviour
             Transform Quality = LaneMade.GetChild(14);
             Transform Invest = LaneMade.GetChild(16);
             Transform Enthusiasm = LaneMade.GetChild(18);
-
-            //Name.GetComponent<TMPro.TextMeshProUGUI>().text = SC.SECONDLVs[0].Name;
+            Name.GetComponent<TMPro.TextMeshProUGUI>().text = SetupData.Candidates[count].Name;
+            count++;
         }
+        count = 0;
     }
 }

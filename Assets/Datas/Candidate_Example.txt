@@ -15,13 +15,13 @@ Name/PartyID/Layer(0~2)
 FirstLayer/SubLayer/POLLPCT/EVPCT/QUALITY/INVESTMENT/ENTHUSIASM
 ---
 John Hoeven/001/1
-ND/ND-01/70.8/46.3/66/71/65
+ND/ND-1/70.8/46.3/66/71/65
 ---
 Katrina Christiansen/002/1
-ND/ND-01/27.5/54.1/62/68/60
+ND/ND-1/27.5/54.1/62/68/60
 ------
 Kelly Armstrong/001/2
-ND/ND-01/69.0/45.1/70/70/73
+ND/ND-1/69.0/45.1/70/70/73
 ---
 Mark Haugen/002/2
-ND/ND-01/28.4/52.5/68/66/64
+ND/ND-1/28.4/52.5/68/66/64
