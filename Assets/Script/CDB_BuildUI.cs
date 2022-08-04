@@ -4,13 +4,13 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShowData : MonoBehaviour
+public class CDB_BuildUI : MonoBehaviour
 {
     public GameObject DataLane;
     public GameObject Header;
     public GameObject Parent;
     public Component[] Temp;
-    public SetupData SC;
+    public Setting_SetupData SC;
     public static List<GameObject> SpawnedLanes = new List<GameObject>();
 
     public void GenerateDataLane(int lanes)
@@ -28,7 +28,6 @@ public class ShowData : MonoBehaviour
             SpawnedLanes.Remove(Item);
             Destroy(Item);
         }
-        Debug.Log(SpawnedLanes.Count);
     }
     public void ShowLaneInfo(List<Candidate> listpassed)
     {

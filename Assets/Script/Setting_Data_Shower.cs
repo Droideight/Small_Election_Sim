@@ -9,11 +9,11 @@ public class Setting_Data_Shower : MonoBehaviour
     public TMPro.TMP_InputField VarietySeed;
     public TMPro.TMP_InputField ElectionSpeed;
     public TMPro.TMP_Text MapOption;
-    public SetupData SD;
+    public Setting_SetupData SD;
 
     private void Start()
     {
-        if (SetupData.FIRSTLVs.Count == 0) SD.GameOpenSetup();
+        if (Setting_SetupData.FIRSTLVs.Count == 0) SD.GameOpenSetup();
         else
         {
             MapOptionSet();

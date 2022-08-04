@@ -5,7 +5,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShowMap : MonoBehaviour
+public class Main_ShowMap : MonoBehaviour
 {
     [SerializeField] double canvax, canvay;
     [SerializeField] double distxcount, distycount;

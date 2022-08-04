@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class MenuNavigate : MonoBehaviour
+public class Cmn_MenuNavigate : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] string scenename = "Menu";

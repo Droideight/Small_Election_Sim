@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BGscroll : MonoBehaviour
+public class Title_BGscroll : MonoBehaviour
 {
     [SerializeField] private RawImage img;
     [SerializeField] private float x, y;

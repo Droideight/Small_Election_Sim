@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Collections.ObjectModel;
 
-public class SetupData : MonoBehaviour
+public class Setting_SetupData : MonoBehaviour
 {
     public static List<SECLV> SECONDLVs = new List<SECLV>();
     public static List<FIRSTLV> FIRSTLVs = new List<FIRSTLV>();
