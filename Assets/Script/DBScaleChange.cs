@@ -78,7 +78,6 @@ public class DBScaleChange : MonoBehaviour
     public void setViewFLV(int FLVID)
     {
         viewFLV = FLVID;
-        Debug.Log(FLVID);
     }
     public void setViewSLV(int SLVID)
     {
@@ -136,7 +135,7 @@ public class DBScaleChange : MonoBehaviour
             if (people.SLayer == SetupData.SECONDLVs[SLV].Name) { ShowData.Add(people); }
         }
         SD.GenerateDataLane(ShowData.Count);
-        SD.ShowLaneInfo();
+        SD.ShowLaneInfo(ShowData);
     }
 
 }
