@@ -48,8 +48,8 @@ public class CDB_BuildUI : MonoBehaviour
                 Transform Invest = LaneMade.GetChild(16);
                 Transform Enthusiasm = LaneMade.GetChild(18);
                 Name.GetComponent<TMPro.TextMeshProUGUI>().text = listpassed[count].Name;
-                Party.GetComponent<TMPro.TextMeshProUGUI>().text = listpassed[count].PartyID.ToString();
-                Race.GetComponent<TMPro.TextMeshProUGUI>().text = listpassed[count].Layer.ToString();
+                Party.GetComponent<TMPro.TextMeshProUGUI>().text = Setting_SetupData.Parties[listpassed[count].PartyID-1].Abbrv.ToString();
+                Race.GetComponent<TMPro.TextMeshProUGUI>().text = GENERAL.LayerList[listpassed[count].Layer-1].ToString(); 
                 FirstLayer.GetComponent<TMPro.TextMeshProUGUI>().text = listpassed[count].FLayer;
                 SecondLayer.GetComponent<TMPro.TextMeshProUGUI>().text = listpassed[count].SLayer;
                 PollPCT.GetComponent<TMPro.TextMeshProUGUI>().text = listpassed[count].PollPCT.ToString();
