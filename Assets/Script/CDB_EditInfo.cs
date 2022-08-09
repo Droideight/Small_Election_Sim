@@ -43,9 +43,33 @@ public class CDB_EditInfo : MonoBehaviour
                 ZeroEF.GetComponent<TMPro.TextMeshProUGUI>().text = "";
                 ZeroIB.SetActive(true);
                 break;
-            case 1: break;
+            case 1:
+                OneEF.GetComponent<TMPro.TextMeshProUGUI>().text = "";
+                TMPro.TMP_Dropdown DDIQ = OneIB.GetComponent<TMPro.TMP_Dropdown>();
+                List<string> DDIQop = new List<string>();
+                DDIQ.ClearOptions();
+                DDIQop.Add("--");
+                foreach (Party A in Setting_SetupData.Parties)
+                {
+                    DDIQop.Add(A.Abbrv);
+                }
+                DDIQ.AddOptions(DDIQop);
+                OneIB.SetActive(true);
+                break;
             case 2: break;
-            case 3: break;
+            case 3:
+                ThreeEF.GetComponent<TMPro.TextMeshProUGUI>().text = "";
+                TMPro.TMP_Dropdown DDIQ3 = ThreeIB.GetComponent<TMPro.TMP_Dropdown>();
+                List<string> DDIQ3op = new List<string>();
+                DDIQ3.ClearOptions();
+                DDIQ3op.Add("--");
+                foreach (FIRSTLV A in Setting_SetupData.FIRSTLVs)
+                {
+                    DDIQ3op.Add(A.abbrv);
+                }
+                DDIQ3.AddOptions(DDIQ3op);
+                ThreeIB.SetActive(true);
+                break;
             case 4: break;
             case 5:
                 FiveEF.GetComponent<TMPro.TextMeshProUGUI>().text = "";
@@ -78,9 +102,15 @@ public class CDB_EditInfo : MonoBehaviour
                 ZeroEF.GetComponent<TMPro.TextMeshProUGUI>().text = ZeroTX.GetComponent<TMPro.TextMeshProUGUI>().text;
                 ZeroIB.SetActive(false);
                 break;
-            case 1: break;
+            case 1:
+                OneEF.GetComponent<TMPro.TextMeshProUGUI>().text = OneTX.GetComponent<TMPro.TextMeshProUGUI>().text;
+                OneIB.SetActive(false);
+                break;
             case 2: break;
-            case 3: break;
+            case 3:
+                ThreeEF.GetComponent<TMPro.TextMeshProUGUI>().text = ThreeTX.GetComponent<TMPro.TextMeshProUGUI>().text;
+                ThreeIB.SetActive(false);
+                break;
             case 4: break;
             case 5:
                 FiveEF.GetComponent<TMPro.TextMeshProUGUI>().text = FiveTX.GetComponent<TMPro.TextMeshProUGUI>().text;
@@ -109,6 +139,8 @@ public class CDB_EditInfo : MonoBehaviour
     private void Start()
     {
         ZeroIB.SetActive(false);
+        OneIB.SetActive(false);
+        ThreeIB.SetActive(false);
         FiveIB.SetActive(false);
         SixIB.SetActive(false);
         SevenIB.SetActive(false);
