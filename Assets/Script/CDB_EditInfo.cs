@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CDB_EditInfo : MonoBehaviour
 {
@@ -34,12 +35,15 @@ public class CDB_EditInfo : MonoBehaviour
     public GameObject SevenTX;  
     public GameObject EightTX;
     public GameObject NineTX;
+    public Setting_SetupData SD;
+    public static int CDB_LaneEdit = 0;
 
     public void EditInfo(int which) 
     {
         switch (which) 
         {
             case 0:
+                CDB_LaneEdit = CDB_ScaleChange.CandidateIDinQuestion[Convert.ToInt32(ZeroEF.name)];
                 ZeroEF.GetComponent<TMPro.TextMeshProUGUI>().text = "";
                 ZeroIB.SetActive(true);
                 break;
@@ -78,7 +82,7 @@ public class CDB_EditInfo : MonoBehaviour
                 DDIQ4op.Add("--");
                 foreach (SECLV A in Setting_SetupData.SECONDLVs)
                 {
-                    DDIQ4op.Add(A.Name);
+                    if (Setting_SetupData.FIRSTLVs[A.FIRSTLV].abbrv == ThreeEF.GetComponent<TMPro.TextMeshProUGUI>().text) DDIQ4op.Add(A.Name);
                 }
                 DDIQ4.AddOptions(DDIQ4op);
                 FourIB.SetActive(true);
@@ -113,6 +117,7 @@ public class CDB_EditInfo : MonoBehaviour
             case 0:
                 ZeroEF.GetComponent<TMPro.TextMeshProUGUI>().text = ZeroTX.GetComponent<TMPro.TextMeshProUGUI>().text;
                 ZeroIB.SetActive(false);
+                Setting_SetupData.Candidates[CDB_LaneEdit].Name = ZeroTX.GetComponent<TMPro.TextMeshProUGUI>().text;
                 break;
             case 1:
                 OneEF.GetComponent<TMPro.TextMeshProUGUI>().text = OneTX.GetComponent<TMPro.TextMeshProUGUI>().text;
@@ -121,6 +126,7 @@ public class CDB_EditInfo : MonoBehaviour
             case 2: break;
             case 3:
                 ThreeEF.GetComponent<TMPro.TextMeshProUGUI>().text = ThreeTX.GetComponent<TMPro.TextMeshProUGUI>().text;
+                FourEF.GetComponent<TMPro.TextMeshProUGUI>().text = "--";
                 ThreeIB.SetActive(false);
                 break;
             case 4:

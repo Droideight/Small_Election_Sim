@@ -177,6 +177,10 @@ public class Setting_SetupData : MonoBehaviour
         LoadCandidate(GENERAL.CandidateFilePath);
         SDS.MapOptionSet();
     }
+    public void WriteCandidate(string filepath, int variI, string variS, int varno) 
+    {
+        
+    }
 }
 public class SECLV
     {

@@ -15,16 +15,16 @@ Name/PartyID/Layer(0~2)
 FirstLayer/SubLayer/POLLPCT/EVPCT/QUALITY/INVESTMENT/ENTHUSIASM
 ---
 John Hoeven/0/1
-0/0/70.8/46.3/66/71/65
+0/0/70.80/46.30/66/71/65
 ---
 Katrina Christiansen/1/1
-0/0/27.5/54.1/62/68/60
+0/0/27.50/54.10/62/68/60
 ------
 Kelly Armstrong/0/2
-0/0/69.0/45.1/70/70/73
+0/0/69.00/45.10/70/70/73
 ---
 Mark Haugen/1/2
-0/0/28.4/52.5/68/66/64
+0/0/28.40/52.50/68/66/64
 ---
 Pin Yang/0/2
-2/0/99.9/99.9/99/99/99
+2/0/99.99/99.99/99/99/99

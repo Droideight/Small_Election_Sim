@@ -20,6 +20,7 @@ public class CDB_ScaleChange : MonoBehaviour
     public GameObject ThirdDropdown;
     public CDB_BuildUI SD;
     List<string> m_DropOptions = new List<string> { "Choose One" };
+    public static List<int> CandidateIDinQuestion = new List<int>();
     public static List<Candidate> ShowData = new List<Candidate>();
 
 
@@ -150,6 +151,7 @@ public class CDB_ScaleChange : MonoBehaviour
     public void LoadL2Candidate(int SLV, int FLV) 
     {
         ShowData.Clear();
+        CandidateIDinQuestion.Clear();
         foreach (Candidate people in Setting_SetupData.Candidates) 
         {
             if (people.SLayer == viewSLV) 
@@ -157,6 +159,7 @@ public class CDB_ScaleChange : MonoBehaviour
                 if (people.FLayer == viewFLV)
                 {
                     ShowData.Add(people);
+                    CandidateIDinQuestion.Add(Setting_SetupData.Candidates.IndexOf(people));
                 }
             }
         }
