@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class Cmn_MenuNavigate : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] string scenename = "Menu";
     public void switchscene (string scenename)
     {

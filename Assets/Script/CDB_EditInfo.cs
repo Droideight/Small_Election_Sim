@@ -48,6 +48,7 @@ public class CDB_EditInfo : MonoBehaviour
                 ZeroIB.SetActive(true);
                 break;
             case 1:
+                CDB_LaneEdit = CDB_ScaleChange.CandidateIDinQuestion[Convert.ToInt32(OneEF.name)];
                 OneEF.GetComponent<TMPro.TextMeshProUGUI>().text = "";
                 TMPro.TMP_Dropdown DDIQ = OneIB.GetComponent<TMPro.TMP_Dropdown>();
                 List<string> DDIQop = new List<string>();
@@ -60,8 +61,11 @@ public class CDB_EditInfo : MonoBehaviour
                 DDIQ.AddOptions(DDIQop);
                 OneIB.SetActive(true);
                 break;
-            case 2: break;
+            case 2:
+                CDB_LaneEdit = CDB_ScaleChange.CandidateIDinQuestion[Convert.ToInt32(TwoEF.name)];
+                break;
             case 3:
+                CDB_LaneEdit = CDB_ScaleChange.CandidateIDinQuestion[Convert.ToInt32(ThreeEF.name)];
                 ThreeEF.GetComponent<TMPro.TextMeshProUGUI>().text = "";
                 TMPro.TMP_Dropdown DDIQ3 = ThreeIB.GetComponent<TMPro.TMP_Dropdown>();
                 List<string> DDIQ3op = new List<string>();
@@ -75,6 +79,7 @@ public class CDB_EditInfo : MonoBehaviour
                 ThreeIB.SetActive(true);
                 break;
             case 4:
+                CDB_LaneEdit = CDB_ScaleChange.CandidateIDinQuestion[Convert.ToInt32(FourEF.name)];
                 FourEF.GetComponent<TMPro.TextMeshProUGUI>().text = "";
                 TMPro.TMP_Dropdown DDIQ4 = FourIB.GetComponent<TMPro.TMP_Dropdown>();
                 List<string> DDIQ4op = new List<string>();
@@ -88,22 +93,27 @@ public class CDB_EditInfo : MonoBehaviour
                 FourIB.SetActive(true);
                 break;
             case 5:
+                CDB_LaneEdit = CDB_ScaleChange.CandidateIDinQuestion[Convert.ToInt32(FiveEF.name)];
                 FiveEF.GetComponent<TMPro.TextMeshProUGUI>().text = "";
                 FiveIB.SetActive(true);
                 break;
             case 6:
+                CDB_LaneEdit = CDB_ScaleChange.CandidateIDinQuestion[Convert.ToInt32(SixEF.name)];
                 SixEF.GetComponent<TMPro.TextMeshProUGUI>().text = "";
                 SixIB.SetActive(true);
                 break;
             case 7:
+                CDB_LaneEdit = CDB_ScaleChange.CandidateIDinQuestion[Convert.ToInt32(SevenEF.name)];
                 SevenEF.GetComponent<TMPro.TextMeshProUGUI>().text = "";
                 SevenIB.SetActive(true);
                 break;
             case 8:
+                CDB_LaneEdit = CDB_ScaleChange.CandidateIDinQuestion[Convert.ToInt32(EightEF.name)];
                 EightEF.GetComponent<TMPro.TextMeshProUGUI>().text = "";
                 EightIB.SetActive(true);
                 break;
             case 9:
+                CDB_LaneEdit = CDB_ScaleChange.CandidateIDinQuestion[Convert.ToInt32(NineEF.name)];
                 NineEF.GetComponent<TMPro.TextMeshProUGUI>().text = "";
                 NineIB.SetActive(true);
                 break;
@@ -122,36 +132,65 @@ public class CDB_EditInfo : MonoBehaviour
             case 1:
                 OneEF.GetComponent<TMPro.TextMeshProUGUI>().text = OneTX.GetComponent<TMPro.TextMeshProUGUI>().text;
                 OneIB.SetActive(false);
+                List<string> temp1 = new List<string>();
+                foreach (Party A in Setting_SetupData.Parties)
+                {
+                    temp1.Add(A.Abbrv);
+                }
+                Setting_SetupData.Candidates[CDB_LaneEdit].PartyID = temp1.IndexOf(OneTX.GetComponent<TMPro.TextMeshProUGUI>().text);
                 break;
             case 2: break;
             case 3:
                 ThreeEF.GetComponent<TMPro.TextMeshProUGUI>().text = ThreeTX.GetComponent<TMPro.TextMeshProUGUI>().text;
                 FourEF.GetComponent<TMPro.TextMeshProUGUI>().text = "--";
                 ThreeIB.SetActive(false);
+                List<string> temp3 = new List<string>();
+                foreach (FIRSTLV A in Setting_SetupData.FIRSTLVs)
+                {
+                    temp3.Add(A.abbrv);
+                }
+                Setting_SetupData.Candidates[CDB_LaneEdit].FLayer = temp3.IndexOf(ThreeTX.GetComponent<TMPro.TextMeshProUGUI>().text);
                 break;
             case 4:
                 FourEF.GetComponent<TMPro.TextMeshProUGUI>().text = FourTX.GetComponent<TMPro.TextMeshProUGUI>().text;
                 FourIB.SetActive(false);
+                List<string> temp4 = new List<string>();
+                foreach (SECLV B in Setting_SetupData.SECONDLVs)
+                {
+                    List<string> tempX = new List<string>();
+                    foreach (FIRSTLV A in Setting_SetupData.FIRSTLVs)
+                    {
+                        tempX.Add(A.abbrv);
+                    }
+                    if (B.FIRSTLV == tempX.IndexOf(ThreeTX.GetComponent<TMPro.TextMeshProUGUI>().text)) 
+                    temp4.Add(B.Name);
+                }
+                Setting_SetupData.Candidates[CDB_LaneEdit].SLayer = temp4.IndexOf(FourTX.GetComponent<TMPro.TextMeshProUGUI>().text);
                 break;
             case 5:
                 FiveEF.GetComponent<TMPro.TextMeshProUGUI>().text = FiveTX.GetComponent<TMPro.TextMeshProUGUI>().text;
                 FiveIB.SetActive(false);
+                Setting_SetupData.Candidates[CDB_LaneEdit].PollPCT = Convert.ToDouble(FiveTX.GetComponent<TMPro.TextMeshProUGUI>().text);
                 break; 
             case 6:
                 SixEF.GetComponent<TMPro.TextMeshProUGUI>().text = SixTX.GetComponent<TMPro.TextMeshProUGUI>().text;
                 SixIB.SetActive(false);
+                Setting_SetupData.Candidates[CDB_LaneEdit].EVPCT = Convert.ToDouble(SixTX.GetComponent<TMPro.TextMeshProUGUI>().text);
                 break;
             case 7:
                 SevenEF.GetComponent<TMPro.TextMeshProUGUI>().text = SevenTX.GetComponent<TMPro.TextMeshProUGUI>().text;
                 SevenIB.SetActive(false);
+                Setting_SetupData.Candidates[CDB_LaneEdit].Quality = Convert.ToDouble(SevenTX.GetComponent<TMPro.TextMeshProUGUI>().text);
                 break;
             case 8:
                 EightEF.GetComponent<TMPro.TextMeshProUGUI>().text = EightTX.GetComponent<TMPro.TextMeshProUGUI>().text;
                 EightIB.SetActive(false);
+                Setting_SetupData.Candidates[CDB_LaneEdit].Investment = Convert.ToDouble(EightTX.GetComponent<TMPro.TextMeshProUGUI>().text);
                 break;
             case 9:
                 NineEF.GetComponent<TMPro.TextMeshProUGUI>().text = NineTX.GetComponent<TMPro.TextMeshProUGUI>().text;
                 NineIB.SetActive(false);
+                Setting_SetupData.Candidates[CDB_LaneEdit].Enthusiasm = Convert.ToDouble(NineTX.GetComponent<TMPro.TextMeshProUGUI>().text);
                 break;
             default: break;
         }
