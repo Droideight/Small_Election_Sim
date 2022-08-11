@@ -70,7 +70,19 @@ public class CDB_EditInfo : MonoBehaviour
                 DDIQ3.AddOptions(DDIQ3op);
                 ThreeIB.SetActive(true);
                 break;
-            case 4: break;
+            case 4:
+                FourEF.GetComponent<TMPro.TextMeshProUGUI>().text = "";
+                TMPro.TMP_Dropdown DDIQ4 = FourIB.GetComponent<TMPro.TMP_Dropdown>();
+                List<string> DDIQ4op = new List<string>();
+                DDIQ4.ClearOptions();
+                DDIQ4op.Add("--");
+                foreach (SECLV A in Setting_SetupData.SECONDLVs)
+                {
+                    DDIQ4op.Add(A.Name);
+                }
+                DDIQ4.AddOptions(DDIQ4op);
+                FourIB.SetActive(true);
+                break;
             case 5:
                 FiveEF.GetComponent<TMPro.TextMeshProUGUI>().text = "";
                 FiveIB.SetActive(true);
@@ -111,7 +123,10 @@ public class CDB_EditInfo : MonoBehaviour
                 ThreeEF.GetComponent<TMPro.TextMeshProUGUI>().text = ThreeTX.GetComponent<TMPro.TextMeshProUGUI>().text;
                 ThreeIB.SetActive(false);
                 break;
-            case 4: break;
+            case 4:
+                FourEF.GetComponent<TMPro.TextMeshProUGUI>().text = FourTX.GetComponent<TMPro.TextMeshProUGUI>().text;
+                FourIB.SetActive(false);
+                break;
             case 5:
                 FiveEF.GetComponent<TMPro.TextMeshProUGUI>().text = FiveTX.GetComponent<TMPro.TextMeshProUGUI>().text;
                 FiveIB.SetActive(false);
@@ -141,6 +156,7 @@ public class CDB_EditInfo : MonoBehaviour
         ZeroIB.SetActive(false);
         OneIB.SetActive(false);
         ThreeIB.SetActive(false);
+        FourIB.SetActive(false);
         FiveIB.SetActive(false);
         SixIB.SetActive(false);
         SevenIB.SetActive(false);

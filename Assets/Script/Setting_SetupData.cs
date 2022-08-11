@@ -40,15 +40,16 @@ public class Setting_SetupData : MonoBehaviour
             string[] temp2;
             temp1 = lines[i].Split('/');
             temp2 = lines[i + 1].Split('/');
-            string name = temp1[0];
-            int X = Convert.ToInt32(temp1[1]);
-            int Y = Convert.ToInt32(temp1[2]);
-            string FLV = temp1[3];
-            int QI = Convert.ToInt32(temp1[4]);
-            string POP = temp1[5];
-            string VTP = temp1[6];
-            string PVI = temp1[7];
-            string POLLSZ = temp1[8];
+            int subID = Convert.ToInt32(temp1[0]);
+            string name = temp1[1];
+            int X = Convert.ToInt32(temp1[2]);
+            int Y = Convert.ToInt32(temp1[3]);
+            int FLV = Convert.ToInt32(temp1[4]);
+            int QI = Convert.ToInt32(temp1[5]);
+            string POP = temp1[6];
+            string VTP = temp1[7];
+            string PVI = temp1[8];
+            string POLLSZ = temp1[9];
             string EPSPD = temp2[0];
             string EPBTH = temp2[1];
             string EPPCT = temp2[2];
@@ -60,6 +61,7 @@ public class Setting_SetupData : MonoBehaviour
             string RM = temp2[8];
             SECONDLVs.Add(new SECLV()
             {
+                SUBID = subID,
                 Name = name,
                 X = X,
                 Y = Y,
@@ -86,12 +88,14 @@ public class Setting_SetupData : MonoBehaviour
         {
             string[] temp;
             temp = lines[i].Split('/');
-            string name = temp[0];
-            string abbrv = temp[1];
-            int CD = Convert.ToInt32(temp[2]);
-            string WTA = temp[3];
+            int ID = Convert.ToInt32(temp[0]);
+            string name = temp[1];
+            string abbrv = temp[2];
+            int CD = Convert.ToInt32(temp[3]);
+            string WTA = temp[4];
             FIRSTLVs.Add(new FIRSTLV() 
             {
+                ID = ID,
                 Name = name,
                 abbrv = abbrv,
                 SECLV = CD,
@@ -124,8 +128,8 @@ public class Setting_SetupData : MonoBehaviour
             string name = temp2[0];
             int partyid = Convert.ToInt32(temp2[1]);
             int layer = Convert.ToInt32(temp2[2]);
-            string Flayer = temp3[0];
-            string Slayer = temp3[1];
+            int Flayer = Convert.ToInt32(temp3[0]);
+            int Slayer = Convert.ToInt32(temp3[1]);
             double pollpct = Convert.ToDouble(temp3[2]);
             double evpct = Convert.ToDouble(temp3[3]);
             double quality = Convert.ToDouble(temp3[4]);
@@ -176,10 +180,11 @@ public class Setting_SetupData : MonoBehaviour
 }
 public class SECLV
     {
+    public int SUBID;
     public new string Name;
     public int X;
     public int Y;
-    public string FIRSTLV;
+    public int FIRSTLV;
     public double QualityImpact;
     public double Population;
     public double VTP;
@@ -198,6 +203,7 @@ public class SECLV
     }
 public class FIRSTLV
 {
+    public int ID;
     public new string Name;
     public string abbrv;
     public double QualityImpact;
@@ -223,8 +229,8 @@ public class Candidate
     public string Name;
     public int PartyID;
     public int Layer;
-    public string FLayer;
-    public string SLayer;
+    public int FLayer;
+    public int SLayer;
     public double PollPCT;
     public double EVPCT;
     public double Quality;
