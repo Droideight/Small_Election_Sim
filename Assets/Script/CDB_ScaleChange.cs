@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class CDB_ScaleChange : MonoBehaviour
 {
-    public string viewscale;
-    public int viewFLV;
-    public int viewSLV;
+    public static string viewscale = "National";
+    public static int viewFLV;
+    public static int viewSLV;
     public GameObject Label;
     public GameObject ScaleText;
     public GameObject FLVText;
@@ -24,14 +24,11 @@ public class CDB_ScaleChange : MonoBehaviour
     public static List<Candidate> ShowData = new List<Candidate>();
 
 
-    private void Update()
+    void Start()
     {
-        if (viewscale != "National" && viewscale != GENERAL.LayerList[0] && viewscale != GENERAL.LayerList[1])
-        {
-            AddOptions(0);
-            setViewScale("National");
-        }
-    }
+          AddOptions(0);
+          setViewScale("National");
+    }    
     public void setViewScaleByChoose()
     {
         setViewScale(Label.GetComponent<TMPro.TextMeshProUGUI>().text);
@@ -109,6 +106,7 @@ public class CDB_ScaleChange : MonoBehaviour
                 m_DropOptions.Add("National");
                 m_DropOptions.Add(GENERAL.LayerList[0]);
                 m_DropOptions.Add(GENERAL.LayerList[1]);
+                Debug.Log(GENERAL.LayerList.Count);
                 TMPro.TMP_Dropdown Myself = FirstDropdown.GetComponent<TMPro.TMP_Dropdown>();
                 Myself.ClearOptions();
                 Myself.AddOptions(m_DropOptions);
@@ -163,6 +161,7 @@ public class CDB_ScaleChange : MonoBehaviour
                 }
             }
         }
+        Debug.Log("NE-3: " + ShowData.Count);
         SD.GenerateDataLane(ShowData.Count);
         SD.ShowLaneInfo(ShowData);
     }

@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using System.Collections.ObjectModel;
 
 public class Setting_SetupData : MonoBehaviour
@@ -22,7 +23,7 @@ public class Setting_SetupData : MonoBehaviour
         GENERAL.MapX = Convert.ToInt32(lines[4]);
         GENERAL.MapY = Convert.ToInt32(lines[5]);
         GENERAL.Layers = Convert.ToInt32(lines[8]);
-        GENERAL.LayerList = lines[11].Split('/');
+        GENERAL.LayerList = lines[11].Split('/').ToList();
         for (int i = 13; i <= 10000; i++)
         {
             if (lines[i].ToString() == "===...===")
@@ -257,7 +258,7 @@ public static class GENERAL
     public static int MapX;
     public static int MapY;
     public static int Layers;
-    public static string[] LayerList = new string[2];
+    public static List<string> LayerList = new List<string>();
     public static int L1;
     public static int L2;
     public static int CandidateQTY;

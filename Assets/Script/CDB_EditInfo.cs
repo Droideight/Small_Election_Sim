@@ -37,6 +37,7 @@ public class CDB_EditInfo : MonoBehaviour
     public GameObject NineTX;
     public Setting_SetupData SD;
     public static int CDB_LaneEdit = 0;
+    public CDB_ScaleChange CSC;
 
     public void EditInfo(int which) 
     {
@@ -165,7 +166,9 @@ public class CDB_EditInfo : MonoBehaviour
                     if (B.FIRSTLV == tempX.IndexOf(ThreeTX.GetComponent<TMPro.TextMeshProUGUI>().text)) 
                     temp4.Add(B.Name);
                 }
+                Debug.Log(temp4.Count);
                 Setting_SetupData.Candidates[CDB_LaneEdit].SLayer = temp4.IndexOf(FourTX.GetComponent<TMPro.TextMeshProUGUI>().text);
+                Debug.Log(Setting_SetupData.Candidates[CDB_LaneEdit].SLayer);
                 break;
             case 5:
                 FiveEF.GetComponent<TMPro.TextMeshProUGUI>().text = FiveTX.GetComponent<TMPro.TextMeshProUGUI>().text;
@@ -194,6 +197,33 @@ public class CDB_EditInfo : MonoBehaviour
                 break;
             default: break;
         }
+    }
+    public void AddNewCandidateFromCDBBtn() 
+    {
+        if (CDB_ScaleChange.viewscale == "National") 
+        {
+            AddCandidate("Pin Yang", 0, 0, CDB_ScaleChange.viewFLV, CDB_ScaleChange.viewSLV, 0.00, 0.00, 50.00, 50.00, 50.00);
+        }
+        else AddCandidate("Pin Yang", 0, (GENERAL.LayerList.IndexOf(CDB_ScaleChange.viewscale))+1, CDB_ScaleChange.viewFLV, CDB_ScaleChange.viewSLV, 0.00,0.00,50.00,50.00,50.00);
+        if (CDB_ScaleChange.viewscale == "National") { CSC.LoadL0Candidate(); }
+        else if (CDB_ScaleChange.viewscale == GENERAL.LayerList[0]) { CSC.LoadL1Candidate(CDB_ScaleChange.viewFLV); }
+        else if (CDB_ScaleChange.viewscale == GENERAL.LayerList[1]) { CSC.LoadL2Candidate(CDB_ScaleChange.viewSLV, CDB_ScaleChange.viewFLV); }
+    }
+    public void AddCandidate(string name, int partyID, int layer, int Flayer, int Slayer, double PollPCT,
+        double EVPCT, double Quality, double Investment, double Enthusiasm) 
+    {
+        Candidate A = new Candidate();
+        A.Name = name;
+        A.PartyID = partyID;
+        A.Layer = layer;
+        A.FLayer = Flayer;
+        A.SLayer = Slayer;
+        A.PollPCT = PollPCT;
+        A.EVPCT = EVPCT;
+        A.Quality = Quality;
+        A.Investment = Investment;
+        A.Enthusiasm = Enthusiasm;
+        Setting_SetupData.Candidates.Add(A);
     }
 
     private void Start()
