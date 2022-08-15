@@ -156,19 +156,19 @@ public class CDB_EditInfo : MonoBehaviour
                 FourEF.GetComponent<TMPro.TextMeshProUGUI>().text = FourTX.GetComponent<TMPro.TextMeshProUGUI>().text;
                 FourIB.SetActive(false);
                 List<string> temp4 = new List<string>();
+                List<string> tempX = new List<string>();
+                foreach (FIRSTLV A in Setting_SetupData.FIRSTLVs)
+                {
+                    tempX.Add(A.abbrv);
+                }
                 foreach (SECLV B in Setting_SetupData.SECONDLVs)
                 {
-                    List<string> tempX = new List<string>();
-                    foreach (FIRSTLV A in Setting_SetupData.FIRSTLVs)
+                    if (B.FIRSTLV == tempX.IndexOf(ThreeEF.GetComponent<TMPro.TextMeshProUGUI>().text))
                     {
-                        tempX.Add(A.abbrv);
+                        temp4.Add(B.Name);
                     }
-                    if (B.FIRSTLV == tempX.IndexOf(ThreeTX.GetComponent<TMPro.TextMeshProUGUI>().text)) 
-                    temp4.Add(B.Name);
                 }
-                Debug.Log(temp4.Count);
                 Setting_SetupData.Candidates[CDB_LaneEdit].SLayer = temp4.IndexOf(FourTX.GetComponent<TMPro.TextMeshProUGUI>().text);
-                Debug.Log(Setting_SetupData.Candidates[CDB_LaneEdit].SLayer);
                 break;
             case 5:
                 FiveEF.GetComponent<TMPro.TextMeshProUGUI>().text = FiveTX.GetComponent<TMPro.TextMeshProUGUI>().text;

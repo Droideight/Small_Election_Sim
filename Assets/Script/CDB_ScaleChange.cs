@@ -106,7 +106,6 @@ public class CDB_ScaleChange : MonoBehaviour
                 m_DropOptions.Add("National");
                 m_DropOptions.Add(GENERAL.LayerList[0]);
                 m_DropOptions.Add(GENERAL.LayerList[1]);
-                Debug.Log(GENERAL.LayerList.Count);
                 TMPro.TMP_Dropdown Myself = FirstDropdown.GetComponent<TMPro.TMP_Dropdown>();
                 Myself.ClearOptions();
                 Myself.AddOptions(m_DropOptions);
@@ -161,7 +160,6 @@ public class CDB_ScaleChange : MonoBehaviour
                 }
             }
         }
-        Debug.Log("NE-3: " + ShowData.Count);
         SD.GenerateDataLane(ShowData.Count);
         SD.ShowLaneInfo(ShowData);
     }
