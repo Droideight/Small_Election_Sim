@@ -8019,6 +8019,7 @@ MonoBehaviour:
   SD: {fileID: 0}
   CSC: {fileID: 0}
   CBU: {fileID: 0}
+  DeleteBtn: {fileID: 0}
 --- !u!114 &4148156539678005549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8595,6 +8596,10 @@ GameObject:
   - component: {fileID: 178905785380036664}
   - component: {fileID: 5866473434486998887}
   - component: {fileID: 7257221568705539870}
+  - component: {fileID: 9108192966214338086}
+  - component: {fileID: 8833028250146541649}
+  - component: {fileID: 7070813906560257727}
+  - component: {fileID: 8691829382257381459}
   m_Layer: 5
   m_Name: REMOVE
   m_TagString: Untagged
@@ -8703,7 +8708,122 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5866473434486998887}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9108192966214338086}
+        m_TargetAssemblyTypeName: CDB_EditInfo, Assembly-CSharp
+        m_MethodName: RemoveCandidate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &9108192966214338086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7019229651813554005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c268ebeda27a6e468e131b6c71062d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ZeroIB: {fileID: 0}
+  OneIB: {fileID: 0}
+  TwoIB: {fileID: 0}
+  ThreeIB: {fileID: 0}
+  FourIB: {fileID: 0}
+  FiveIB: {fileID: 0}
+  SixIB: {fileID: 0}
+  SevenIB: {fileID: 0}
+  EightIB: {fileID: 0}
+  NineIB: {fileID: 0}
+  ZeroEF: {fileID: 0}
+  OneEF: {fileID: 0}
+  TwoEF: {fileID: 0}
+  ThreeEF: {fileID: 0}
+  FourEF: {fileID: 0}
+  FiveEF: {fileID: 0}
+  SixEF: {fileID: 0}
+  SevenEF: {fileID: 0}
+  EightEF: {fileID: 0}
+  NineEF: {fileID: 0}
+  ZeroTX: {fileID: 0}
+  OneTX: {fileID: 0}
+  TwoTX: {fileID: 0}
+  ThreeTX: {fileID: 0}
+  FourTX: {fileID: 0}
+  FiveTX: {fileID: 0}
+  SixTX: {fileID: 0}
+  SevenTX: {fileID: 0}
+  EightTX: {fileID: 0}
+  NineTX: {fileID: 0}
+  SD: {fileID: 8691829382257381459}
+  CSC: {fileID: 7070813906560257727}
+  CBU: {fileID: 8833028250146541649}
+  DeleteBtn: {fileID: 7019229651813554005}
+--- !u!114 &8833028250146541649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7019229651813554005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d893127f5b4be2042ac52a5d267eabfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DataLane: {fileID: 4923299510672384695}
+  Header: {fileID: 0}
+  Parent: {fileID: 0}
+  Temp: []
+  SC: {fileID: 8691829382257381459}
+  CEI: {fileID: 9108192966214338086}
+  CSC: {fileID: 7070813906560257727}
+--- !u!114 &7070813906560257727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7019229651813554005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5768807c8d3f30c4baffd67ab7bf9088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: {fileID: 0}
+  ScaleText: {fileID: 0}
+  FLVText: {fileID: 0}
+  SLVText: {fileID: 0}
+  EnableOptions: {fileID: 0}
+  Me: {fileID: 0}
+  FirstDropdown: {fileID: 0}
+  SecondDropdown: {fileID: 0}
+  ThirdDropdown: {fileID: 0}
+  AddCandidate: {fileID: 0}
+  DontShowNat: {fileID: 0}
+  DontShowFly: {fileID: 0}
+  SD: {fileID: 0}
+--- !u!114 &8691829382257381459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7019229651813554005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c090a3f5687484f98da1a4dd5dabc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SDS: {fileID: 0}
 --- !u!1 &7044477180170746874
 GameObject:
   m_ObjectHideFlags: 0
@@ -10737,6 +10857,10 @@ PrefabInstance:
       propertyPath: ThreeTX
       value: 
       objectReference: {fileID: 9148995086202273111}
+    - target: {fileID: 6575623925092796562, guid: 6d97ede5a3d14ab49ad18e7f05539f94, type: 3}
+      propertyPath: DeleteBtn
+      value: 
+      objectReference: {fileID: 7019229651813554005}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d97ede5a3d14ab49ad18e7f05539f94, type: 3}
 --- !u!4 &4273828845607243407 stripped

@@ -40,6 +40,8 @@ public class CDB_BuildUI : MonoBehaviour
             {
                 Transform LaneMade = Lane.transform;
                 LaneMade.name = count.ToString();
+                Transform DelBtn = LaneMade.GetChild(1);
+                DelBtn.name = count.ToString();
                 Transform Name = LaneMade.GetChild(2);
                 Name.name = count.ToString();
                 Transform Party = LaneMade.GetChild(4);

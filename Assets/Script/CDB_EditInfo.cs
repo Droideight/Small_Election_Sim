@@ -39,6 +39,7 @@ public class CDB_EditInfo : MonoBehaviour
     public static int CDB_LaneEdit = 0;
     public CDB_ScaleChange CSC;
     public CDB_BuildUI CBU;
+    public GameObject DeleteBtn;
 
     public void EditInfo(int which) 
     {
@@ -214,6 +215,13 @@ public class CDB_EditInfo : MonoBehaviour
         A.Investment = Investment;
         A.Enthusiasm = Enthusiasm;
         Setting_SetupData.Candidates.Add(A);
+    }
+    public void RemoveCandidate()
+    {
+        CDB_LaneEdit = CDB_ScaleChange.CandidateIDinQuestion[Convert.ToInt32(DeleteBtn.name)];
+        CDB_BuildUI.SpawnedLanes.RemoveAt(Convert.ToInt32(DeleteBtn.name));
+        Destroy(CDB_BuildUI.SpawnedLanes[Convert.ToInt32(DeleteBtn.name)]);
+        Setting_SetupData.Candidates.RemoveAt(CDB_LaneEdit);
     }
 
     private void Start()
