@@ -18,6 +18,9 @@ public class CDB_ScaleChange : MonoBehaviour
     public GameObject FirstDropdown;
     public GameObject SecondDropdown; 
     public GameObject ThirdDropdown;
+    public GameObject AddCandidate;
+    public GameObject DontShowNat;
+    public GameObject DontShowFly;
     public CDB_BuildUI SD;
     List<string> m_DropOptions = new List<string> { "Choose One" };
     public static List<int> CandidateIDinQuestion = new List<int>();
@@ -155,6 +158,8 @@ public class CDB_ScaleChange : MonoBehaviour
                 CandidateIDinQuestion.Add(Setting_SetupData.Candidates.IndexOf(people));
             }
         }
+        Button AC = AddCandidate.GetComponent<Button>();
+        AC.interactable = true;
     }
     public void LoadL1Candidate(int FLV) 
     {
@@ -173,6 +178,8 @@ public class CDB_ScaleChange : MonoBehaviour
         }
         SD.GenerateDataLane(ShowData.Count);
         SD.ShowLaneInfo(ShowData);
+        Button AC = AddCandidate.GetComponent<Button>();
+        AC.interactable = true;
     }
     public void LoadL2Candidate(int SLV, int FLV) 
     {
@@ -191,6 +198,8 @@ public class CDB_ScaleChange : MonoBehaviour
         }
         SD.GenerateDataLane(ShowData.Count);
         SD.ShowLaneInfo(ShowData);
+        Button AC = AddCandidate.GetComponent<Button>();
+        AC.interactable = true;
     }
 
 }

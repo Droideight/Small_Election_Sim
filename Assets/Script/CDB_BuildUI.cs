@@ -17,7 +17,6 @@ public class CDB_BuildUI : MonoBehaviour
 
     public void GenerateDataLane(int lanes)
     {
-        Debug.Log(SpawnedLanes.Count);
         for (int i = 1; i<= lanes; i++) 
         {
             GameObject NewLane = Instantiate(DataLane, new Vector3(Header.transform.position.x, Header.transform.position.y, Header.transform.position.z), Quaternion.identity, Parent.transform);
@@ -41,25 +40,25 @@ public class CDB_BuildUI : MonoBehaviour
             {
                 Transform LaneMade = Lane.transform;
                 LaneMade.name = count.ToString();
-                Transform Name = LaneMade.GetChild(0);
+                Transform Name = LaneMade.GetChild(2);
                 Name.name = count.ToString();
-                Transform Party = LaneMade.GetChild(2);
+                Transform Party = LaneMade.GetChild(4);
                 Party.name = count.ToString();
-                Transform Race = LaneMade.GetChild(4);
+                Transform Race = LaneMade.GetChild(6);
                 Race.name = count.ToString();
-                Transform FirstLayer = LaneMade.GetChild(6);
+                Transform FirstLayer = LaneMade.GetChild(8);
                 FirstLayer.name = count.ToString();
-                Transform SecondLayer = LaneMade.GetChild(8);
+                Transform SecondLayer = LaneMade.GetChild(10);
                 SecondLayer.name = count.ToString();
-                Transform PollPCT = LaneMade.GetChild(10);
+                Transform PollPCT = LaneMade.GetChild(12);
                 PollPCT.name = count.ToString();
-                Transform EVPCT = LaneMade.GetChild(12);
+                Transform EVPCT = LaneMade.GetChild(14);
                 EVPCT.name = count.ToString();
-                Transform Quality = LaneMade.GetChild(14);
+                Transform Quality = LaneMade.GetChild(16);
                 Quality.name = count.ToString();
-                Transform Invest = LaneMade.GetChild(16);
+                Transform Invest = LaneMade.GetChild(18);
                 Invest.name = count.ToString();
-                Transform Enthusiasm = LaneMade.GetChild(18);
+                Transform Enthusiasm = LaneMade.GetChild(20);
                 Enthusiasm.name = count.ToString();
                 Name.GetComponent<TMPro.TextMeshProUGUI>().text = listpassed[count].Name;
                 Party.GetComponent<TMPro.TextMeshProUGUI>().text = Setting_SetupData.Parties[listpassed[count].PartyID].Abbrv.ToString();
