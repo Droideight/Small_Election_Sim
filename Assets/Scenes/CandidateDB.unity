@@ -503,7 +503,7 @@ MonoBehaviour:
   FirstDropdown: {fileID: 429851787}
   SecondDropdown: {fileID: 25277174}
   ThirdDropdown: {fileID: 112754276}
-  SD: {fileID: 0}
+  SD: {fileID: 25277181}
 --- !u!114 &25277180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,6 +534,8 @@ MonoBehaviour:
   Parent: {fileID: 168114384}
   Temp: []
   SC: {fileID: 25277180}
+  CEI: {fileID: 0}
+  CSC: {fileID: 0}
 --- !u!1 &42313612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,6 +1113,8 @@ MonoBehaviour:
   Parent: {fileID: 168114384}
   Temp: []
   SC: {fileID: 112754282}
+  CEI: {fileID: 0}
+  CSC: {fileID: 0}
 --- !u!1 &122142462
 GameObject:
   m_ObjectHideFlags: 0
@@ -2192,6 +2196,8 @@ MonoBehaviour:
   Parent: {fileID: 168114384}
   Temp: []
   SC: {fileID: 429851793}
+  CEI: {fileID: 0}
+  CSC: {fileID: 0}
 --- !u!1 &434080510
 GameObject:
   m_ObjectHideFlags: 0
@@ -3658,6 +3664,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PrefabController
       objectReference: {fileID: 0}
+    - target: {fileID: 6575623925092796562, guid: 6d97ede5a3d14ab49ad18e7f05539f94, type: 3}
+      propertyPath: CBU
+      value: 
+      objectReference: {fileID: 1644939081}
     - target: {fileID: 6575623925092796562, guid: 6d97ede5a3d14ab49ad18e7f05539f94, type: 3}
       propertyPath: CSC
       value: 
@@ -5556,7 +5566,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1868873229668648802, guid: 6d97ede5a3d14ab49ad18e7f05539f94, type: 3}
   m_PrefabInstance: {fileID: 786777102}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1644939078}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5768807c8d3f30c4baffd67ab7bf9088, type: 3}
@@ -5567,7 +5577,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6575623925092796562, guid: 6d97ede5a3d14ab49ad18e7f05539f94, type: 3}
   m_PrefabInstance: {fileID: 786777102}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1644939078}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c268ebeda27a6e468e131b6c71062d2, type: 3}
@@ -6399,8 +6409,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1272930890}
-        m_TargetAssemblyTypeName: CDB_EditInfo, Assembly-CSharp
+      - m_Target: {fileID: 1644939081}
+        m_TargetAssemblyTypeName: CDB_BuildUI, Assembly-CSharp
         m_MethodName: AddNewCandidateFromCDBBtn
         m_Mode: 1
         m_Arguments:
@@ -6610,6 +6620,8 @@ MonoBehaviour:
   Parent: {fileID: 168114384}
   Temp: []
   SC: {fileID: 1612318959}
+  CEI: {fileID: 0}
+  CSC: {fileID: 0}
 --- !u!114 &1612318959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6854,6 +6866,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631985035}
   m_CullTransparentMesh: 1
+--- !u!1 &1644939078 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3761701329922463058, guid: 6d97ede5a3d14ab49ad18e7f05539f94, type: 3}
+  m_PrefabInstance: {fileID: 786777102}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1644939079 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4368994037219196798, guid: 6d97ede5a3d14ab49ad18e7f05539f94, type: 3}
+  m_PrefabInstance: {fileID: 786777102}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644939078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c090a3f5687484f98da1a4dd5dabc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1644939081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644939078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d893127f5b4be2042ac52a5d267eabfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DataLane: {fileID: 4923299510672384695, guid: fc9359a0e42288b498afad4755470cbe, type: 3}
+  Header: {fileID: 1196889180}
+  Parent: {fileID: 168114384}
+  Temp: []
+  SC: {fileID: 1644939079}
+  CEI: {fileID: 1272930890}
+  CSC: {fileID: 1272930889}
 --- !u!1 &1645209195
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,7 +45,7 @@ public class CDB_ScaleChange : MonoBehaviour
         setViewScale(ScaleText.GetComponent<TMPro.TextMeshProUGUI>().text);
         foreach (FIRSTLV entity in Setting_SetupData.FIRSTLVs) 
         { 
-        if (entity.Name == Label.GetComponent<TMPro.TextMeshProUGUI>().text) 
+            if (entity.Name == Label.GetComponent<TMPro.TextMeshProUGUI>().text) 
             {
                 setViewFLV(Setting_SetupData.FIRSTLVs.IndexOf(entity));
             }
@@ -55,7 +55,12 @@ public class CDB_ScaleChange : MonoBehaviour
         string C1 = GENERAL.LayerList[0];
         string C2 = GENERAL.LayerList[1];
         if (viewscale == "National") { option.interactable = false; }
-        else if (viewscale == C1) { option.interactable = false; SD.DestroyDataLane(); LoadL1Candidate(viewFLV); }
+        else if (viewscale == C1) 
+        { 
+            option.interactable = false;
+            SD.DestroyDataLane();
+            LoadL1Candidate(viewFLV); 
+        }
         else if (viewscale == C2) { option.interactable = true; AddOptions(2);}
     }
     public void setViewSLVByChoose()
@@ -140,10 +145,34 @@ public class CDB_ScaleChange : MonoBehaviour
         }
 
     }
-    public void LoadL0Candidate() { }
+    public void LoadL0Candidate() 
+    {
+        foreach (Candidate people in Setting_SetupData.Candidates)
+        {
+            if (people.Layer == 0)
+            {
+                ShowData.Add(people);
+                CandidateIDinQuestion.Add(Setting_SetupData.Candidates.IndexOf(people));
+            }
+        }
+    }
     public void LoadL1Candidate(int FLV) 
     {
-        
+        ShowData.Clear();
+        CandidateIDinQuestion.Clear();
+        foreach (Candidate people in Setting_SetupData.Candidates)
+        {
+            if (people.FLayer == viewFLV)
+            {
+                if (people.Layer == 1)
+                {
+                    ShowData.Add(people);
+                    CandidateIDinQuestion.Add(Setting_SetupData.Candidates.IndexOf(people));
+                }
+            }
+        }
+        SD.GenerateDataLane(ShowData.Count);
+        SD.ShowLaneInfo(ShowData);
     }
     public void LoadL2Candidate(int SLV, int FLV) 
     {

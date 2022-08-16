@@ -38,6 +38,7 @@ public class CDB_EditInfo : MonoBehaviour
     public Setting_SetupData SD;
     public static int CDB_LaneEdit = 0;
     public CDB_ScaleChange CSC;
+    public CDB_BuildUI CBU;
 
     public void EditInfo(int which) 
     {
@@ -197,17 +198,6 @@ public class CDB_EditInfo : MonoBehaviour
                 break;
             default: break;
         }
-    }
-    public void AddNewCandidateFromCDBBtn() 
-    {
-        if (CDB_ScaleChange.viewscale == "National") 
-        {
-            AddCandidate("Pin Yang", 0, 0, CDB_ScaleChange.viewFLV, CDB_ScaleChange.viewSLV, 0.00, 0.00, 50.00, 50.00, 50.00);
-        }
-        else AddCandidate("Pin Yang", 0, (GENERAL.LayerList.IndexOf(CDB_ScaleChange.viewscale))+1, CDB_ScaleChange.viewFLV, CDB_ScaleChange.viewSLV, 0.00,0.00,50.00,50.00,50.00);
-        if (CDB_ScaleChange.viewscale == "National") { CSC.LoadL0Candidate(); }
-        else if (CDB_ScaleChange.viewscale == GENERAL.LayerList[0]) { CSC.LoadL1Candidate(CDB_ScaleChange.viewFLV); }
-        else if (CDB_ScaleChange.viewscale == GENERAL.LayerList[1]) { CSC.LoadL2Candidate(CDB_ScaleChange.viewSLV, CDB_ScaleChange.viewFLV); }
     }
     public void AddCandidate(string name, int partyID, int layer, int Flayer, int Slayer, double PollPCT,
         double EVPCT, double Quality, double Investment, double Enthusiasm) 
