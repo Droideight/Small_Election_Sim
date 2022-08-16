@@ -86,11 +86,19 @@ public class CDB_BuildUI : MonoBehaviour
     {
         if (CDB_ScaleChange.viewscale == "National")
         {
-
+            for (int i = 0; i <= Setting_SetupData.SECONDLVs.Count - 1; i++)
+            {
+                //CEI.AddCandidate("Pin Yang", 0, 0 , 999 ,999 , 0.00, 0.00, 50.00, 50.00, 50.00);
+                //999=> To State.
+                //CD=> State AVG.
+            }
         }
         else if (CDB_ScaleChange.viewscale == GENERAL.LayerList[0])
         {
-
+            for (int i = 0; i <= Setting_SetupData.FIRSTLVs[CDB_ScaleChange.viewFLV].SECLV-1; i++)
+            {
+                CEI.AddCandidate("Pin Yang", 0, (GENERAL.LayerList.IndexOf(CDB_ScaleChange.viewscale)) + 1, CDB_ScaleChange.viewFLV, i, 0.00, 0.00, 50.00, 50.00, 50.00);
+            }
         }
         else if (CDB_ScaleChange.viewscale == GENERAL.LayerList[1])
         {
