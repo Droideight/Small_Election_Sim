@@ -21,7 +21,8 @@ public class CDB_ScaleChange : MonoBehaviour
     public GameObject AddCandidate;
     public GameObject DontShowNat;
     public GameObject DontShowFly;
-    public CDB_BuildUI SD;
+    public CDB_BuildUI CBU;
+    public CDB_EditInfo CEI;
     List<string> m_DropOptions = new List<string> { "Choose One" };
     public static List<int> CandidateIDinQuestion = new List<int>();
     public static List<Candidate> ShowData = new List<Candidate>();
@@ -37,15 +38,19 @@ public class CDB_ScaleChange : MonoBehaviour
         setViewScale(Label.GetComponent<TMPro.TextMeshProUGUI>().text);
         TMPro.TMP_Dropdown option = EnableOptions.GetComponent<TMPro.TMP_Dropdown>();
         TMPro.TMP_Dropdown third = ThirdDropdown.GetComponent<TMPro.TMP_Dropdown>();
-        string C1 = GENERAL.LayerList[0];
-        string C2 = GENERAL.LayerList[1];
-        if (viewscale == "National") { option.interactable = false; third.interactable = false; SD.DestroyDataLane(); LoadL0Candidate(); }
-        else if (viewscale == C1) { option.interactable = true; third.interactable = false; AddOptions(1); }
-        else if (viewscale == C2) { option.interactable = true; third.interactable = false; AddOptions(1); }
+        if (viewscale == "National") 
+        { 
+            option.interactable = false; third.interactable = false; CBU.RefreshCandidatePanel(); 
+            Button AC = AddCandidate.GetComponent<Button>();
+            AC.interactable = true;
+        }
+        else if (viewscale == GENERAL.LayerList[0]) { option.interactable = true; third.interactable = false; AddOptions(1); }
+        else if (viewscale == GENERAL.LayerList[1]) { option.interactable = true; third.interactable = false; AddOptions(1); }
     }
     public void setViewFLVByChoose()
     {
         setViewScale(ScaleText.GetComponent<TMPro.TextMeshProUGUI>().text);
+        //viewFLV
         foreach (FIRSTLV entity in Setting_SetupData.FIRSTLVs) 
         { 
             if (entity.Name == Label.GetComponent<TMPro.TextMeshProUGUI>().text) 
@@ -55,20 +60,26 @@ public class CDB_ScaleChange : MonoBehaviour
         }
         TMPro.TMP_Dropdown option = EnableOptions.GetComponent<TMPro.TMP_Dropdown>();
         TMPro.TMP_Dropdown third = ThirdDropdown.GetComponent<TMPro.TMP_Dropdown>();
-        string C1 = GENERAL.LayerList[0];
-        string C2 = GENERAL.LayerList[1];
-        if (viewscale == "National") { option.interactable = false; }
-        else if (viewscale == C1) 
+        if (viewscale == "National") 
+        { 
+            option.interactable = false; 
+        }
+        else if (viewscale == GENERAL.LayerList[0]) 
         { 
             option.interactable = false;
-            SD.DestroyDataLane();
-            LoadL1Candidate(viewFLV); 
+            CBU.RefreshCandidatePanel();
+            Button AC = AddCandidate.GetComponent<Button>();
+            AC.interactable = true;
         }
-        else if (viewscale == C2) { option.interactable = true; AddOptions(2);}
+        else if (viewscale == GENERAL.LayerList[1]) 
+        { 
+            option.interactable = true; AddOptions(2);
+        }
     }
     public void setViewSLVByChoose()
     {
         setViewScale(ScaleText.GetComponent<TMPro.TextMeshProUGUI>().text);
+        //setViewFLV
         foreach (FIRSTLV entity in Setting_SetupData.FIRSTLVs)
         {
             if (entity.Name == FLVText.GetComponent<TMPro.TextMeshProUGUI>().text)
@@ -76,6 +87,7 @@ public class CDB_ScaleChange : MonoBehaviour
                 setViewFLV(Setting_SetupData.FIRSTLVs.IndexOf(entity));
             }
         }
+        //setViewSLV
         foreach (SECLV entity in Setting_SetupData.SECONDLVs)
         {
             if (entity.Name == Label.GetComponent<TMPro.TextMeshProUGUI>().text)
@@ -87,10 +99,11 @@ public class CDB_ScaleChange : MonoBehaviour
                     if (entity2.FIRSTLV == viewFLV) ONLYTHISSTATE.Add(entity2);
                 }
                 setViewSLV(ONLYTHISSTATE.IndexOf(entity));
-                SD.DestroyDataLane();
-                LoadL2Candidate(viewSLV, viewFLV);
             }
         }
+        CBU.RefreshCandidatePanel();
+        Button AC = AddCandidate.GetComponent<Button>();
+        AC.interactable = true;
     }
     public void setViewScale(string scale)
     {
@@ -148,7 +161,7 @@ public class CDB_ScaleChange : MonoBehaviour
         }
 
     }
-    public void LoadL0Candidate() 
+    public List<Candidate> LoadL0Candidate() 
     {
         foreach (Candidate people in Setting_SetupData.Candidates)
         {
@@ -158,10 +171,12 @@ public class CDB_ScaleChange : MonoBehaviour
                 CandidateIDinQuestion.Add(Setting_SetupData.Candidates.IndexOf(people));
             }
         }
+        //relic tech area
         Button AC = AddCandidate.GetComponent<Button>();
         AC.interactable = true;
+        return ShowData;
     }
-    public void LoadL1Candidate(int FLV) 
+    public List<Candidate> LoadL1Candidate() 
     {
         ShowData.Clear();
         CandidateIDinQuestion.Clear();
@@ -176,12 +191,14 @@ public class CDB_ScaleChange : MonoBehaviour
                 }
             }
         }
-        SD.GenerateDataLane(ShowData.Count);
-        SD.ShowLaneInfo(ShowData);
+        //SD.GenerateDataLane(ShowData.Count);
+        //SD.ShowLaneInfo(ShowData);
+        //relic tech area
         Button AC = AddCandidate.GetComponent<Button>();
         AC.interactable = true;
+        return ShowData;
     }
-    public void LoadL2Candidate(int SLV, int FLV) 
+    public List<Candidate> LoadL2Candidate() 
     {
         ShowData.Clear();
         CandidateIDinQuestion.Clear();
@@ -196,10 +213,6 @@ public class CDB_ScaleChange : MonoBehaviour
                 }
             }
         }
-        SD.GenerateDataLane(ShowData.Count);
-        SD.ShowLaneInfo(ShowData);
-        Button AC = AddCandidate.GetComponent<Button>();
-        AC.interactable = true;
+        return ShowData;
     }
-
 }

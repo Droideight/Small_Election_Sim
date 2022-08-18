@@ -346,6 +346,7 @@ GameObject:
   - component: {fileID: 25277176}
   - component: {fileID: 25277180}
   - component: {fileID: 25277179}
+  - component: {fileID: 25277182}
   - component: {fileID: 25277181}
   m_Layer: 5
   m_Name: FirstLevel
@@ -431,8 +432,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 25277179}
-        m_TargetAssemblyTypeName: DBScaleChange, Assembly-CSharp
+      - m_Target: {fileID: 1272930889}
+        m_TargetAssemblyTypeName: CDB_ScaleChange, Assembly-CSharp
         m_MethodName: setViewFLVByChoose
         m_Mode: 1
         m_Arguments:
@@ -506,7 +507,8 @@ MonoBehaviour:
   AddCandidate: {fileID: 1557808542}
   DontShowNat: {fileID: 1987506970}
   DontShowFly: {fileID: 657229768}
-  SD: {fileID: 25277181}
+  CBU: {fileID: 25277181}
+  CEI: {fileID: 25277182}
 --- !u!114 &25277180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,8 +539,54 @@ MonoBehaviour:
   Parent: {fileID: 168114384}
   Temp: []
   SC: {fileID: 25277180}
-  CEI: {fileID: 0}
-  CSC: {fileID: 0}
+  CEI: {fileID: 25277182}
+  CSC: {fileID: 25277179}
+--- !u!114 &25277182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25277174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c268ebeda27a6e468e131b6c71062d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ZeroIB: {fileID: 0}
+  OneIB: {fileID: 0}
+  TwoIB: {fileID: 0}
+  ThreeIB: {fileID: 0}
+  FourIB: {fileID: 0}
+  FiveIB: {fileID: 0}
+  SixIB: {fileID: 0}
+  SevenIB: {fileID: 0}
+  EightIB: {fileID: 0}
+  NineIB: {fileID: 0}
+  ZeroEF: {fileID: 0}
+  OneEF: {fileID: 0}
+  TwoEF: {fileID: 0}
+  ThreeEF: {fileID: 0}
+  FourEF: {fileID: 0}
+  FiveEF: {fileID: 0}
+  SixEF: {fileID: 0}
+  SevenEF: {fileID: 0}
+  EightEF: {fileID: 0}
+  NineEF: {fileID: 0}
+  ZeroTX: {fileID: 0}
+  OneTX: {fileID: 0}
+  TwoTX: {fileID: 0}
+  ThreeTX: {fileID: 0}
+  FourTX: {fileID: 0}
+  FiveTX: {fileID: 0}
+  SixTX: {fileID: 0}
+  SevenTX: {fileID: 0}
+  EightTX: {fileID: 0}
+  NineTX: {fileID: 0}
+  SD: {fileID: 0}
+  CSC: {fileID: 25277179}
+  CBU: {fileID: 25277181}
+  DeleteBtn: {fileID: 0}
 --- !u!1 &42313612
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,6 +977,7 @@ GameObject:
   - component: {fileID: 112754282}
   - component: {fileID: 112754281}
   - component: {fileID: 112754283}
+  - component: {fileID: 112754284}
   m_Layer: 5
   m_Name: SecondLevel
   m_TagString: Untagged
@@ -1013,8 +1062,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 112754281}
-        m_TargetAssemblyTypeName: DBScaleChange, Assembly-CSharp
+      - m_Target: {fileID: 1272930889}
+        m_TargetAssemblyTypeName: CDB_ScaleChange, Assembly-CSharp
         m_MethodName: setViewSLVByChoose
         m_Mode: 1
         m_Arguments:
@@ -1088,7 +1137,8 @@ MonoBehaviour:
   AddCandidate: {fileID: 1557808542}
   DontShowNat: {fileID: 1987506970}
   DontShowFly: {fileID: 657229768}
-  SD: {fileID: 112754283}
+  CBU: {fileID: 112754283}
+  CEI: {fileID: 112754284}
 --- !u!114 &112754282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1119,8 +1169,54 @@ MonoBehaviour:
   Parent: {fileID: 168114384}
   Temp: []
   SC: {fileID: 112754282}
-  CEI: {fileID: 0}
-  CSC: {fileID: 0}
+  CEI: {fileID: 112754284}
+  CSC: {fileID: 112754281}
+--- !u!114 &112754284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112754276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c268ebeda27a6e468e131b6c71062d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ZeroIB: {fileID: 0}
+  OneIB: {fileID: 0}
+  TwoIB: {fileID: 0}
+  ThreeIB: {fileID: 0}
+  FourIB: {fileID: 0}
+  FiveIB: {fileID: 0}
+  SixIB: {fileID: 0}
+  SevenIB: {fileID: 0}
+  EightIB: {fileID: 0}
+  NineIB: {fileID: 0}
+  ZeroEF: {fileID: 0}
+  OneEF: {fileID: 0}
+  TwoEF: {fileID: 0}
+  ThreeEF: {fileID: 0}
+  FourEF: {fileID: 0}
+  FiveEF: {fileID: 0}
+  SixEF: {fileID: 0}
+  SevenEF: {fileID: 0}
+  EightEF: {fileID: 0}
+  NineEF: {fileID: 0}
+  ZeroTX: {fileID: 0}
+  OneTX: {fileID: 0}
+  TwoTX: {fileID: 0}
+  ThreeTX: {fileID: 0}
+  FourTX: {fileID: 0}
+  FiveTX: {fileID: 0}
+  SixTX: {fileID: 0}
+  SevenTX: {fileID: 0}
+  EightTX: {fileID: 0}
+  NineTX: {fileID: 0}
+  SD: {fileID: 0}
+  CSC: {fileID: 112754281}
+  CBU: {fileID: 112754283}
+  DeleteBtn: {fileID: 0}
 --- !u!1 &122142462
 GameObject:
   m_ObjectHideFlags: 0
@@ -2011,6 +2107,7 @@ GameObject:
   - component: {fileID: 429851790}
   - component: {fileID: 429851789}
   - component: {fileID: 429851792}
+  - component: {fileID: 429851795}
   - component: {fileID: 429851793}
   - component: {fileID: 429851794}
   m_Layer: 5
@@ -2099,8 +2196,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 429851792}
-        m_TargetAssemblyTypeName: DBScaleChange, Assembly-CSharp
+      - m_Target: {fileID: 1272930889}
+        m_TargetAssemblyTypeName: CDB_ScaleChange, Assembly-CSharp
         m_MethodName: setViewScaleByChoose
         m_Mode: 1
         m_Arguments:
@@ -2174,7 +2271,8 @@ MonoBehaviour:
   AddCandidate: {fileID: 1557808542}
   DontShowNat: {fileID: 1987506970}
   DontShowFly: {fileID: 657229768}
-  SD: {fileID: 429851794}
+  CBU: {fileID: 429851794}
+  CEI: {fileID: 429851795}
 --- !u!114 &429851793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2205,8 +2303,54 @@ MonoBehaviour:
   Parent: {fileID: 168114384}
   Temp: []
   SC: {fileID: 429851793}
-  CEI: {fileID: 0}
-  CSC: {fileID: 0}
+  CEI: {fileID: 429851795}
+  CSC: {fileID: 429851792}
+--- !u!114 &429851795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429851787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c268ebeda27a6e468e131b6c71062d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ZeroIB: {fileID: 0}
+  OneIB: {fileID: 0}
+  TwoIB: {fileID: 0}
+  ThreeIB: {fileID: 0}
+  FourIB: {fileID: 0}
+  FiveIB: {fileID: 0}
+  SixIB: {fileID: 0}
+  SevenIB: {fileID: 0}
+  EightIB: {fileID: 0}
+  NineIB: {fileID: 0}
+  ZeroEF: {fileID: 0}
+  OneEF: {fileID: 0}
+  TwoEF: {fileID: 0}
+  ThreeEF: {fileID: 0}
+  FourEF: {fileID: 0}
+  FiveEF: {fileID: 0}
+  SixEF: {fileID: 0}
+  SevenEF: {fileID: 0}
+  EightEF: {fileID: 0}
+  NineEF: {fileID: 0}
+  ZeroTX: {fileID: 0}
+  OneTX: {fileID: 0}
+  TwoTX: {fileID: 0}
+  ThreeTX: {fileID: 0}
+  FourTX: {fileID: 0}
+  FiveTX: {fileID: 0}
+  SixTX: {fileID: 0}
+  SevenTX: {fileID: 0}
+  EightTX: {fileID: 0}
+  NineTX: {fileID: 0}
+  SD: {fileID: 0}
+  CSC: {fileID: 429851792}
+  CBU: {fileID: 429851794}
+  DeleteBtn: {fileID: 0}
 --- !u!1 &434080510
 GameObject:
   m_ObjectHideFlags: 0
@@ -3924,6 +4068,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1868873229668648802, guid: 6d97ede5a3d14ab49ad18e7f05539f94, type: 3}
+      propertyPath: CBU
+      value: 
+      objectReference: {fileID: 1644939081}
+    - target: {fileID: 1868873229668648802, guid: 6d97ede5a3d14ab49ad18e7f05539f94, type: 3}
+      propertyPath: CEI
+      value: 
+      objectReference: {fileID: 1272930890}
     - target: {fileID: 1868873229668648802, guid: 6d97ede5a3d14ab49ad18e7f05539f94, type: 3}
       propertyPath: DontShowFly
       value: 

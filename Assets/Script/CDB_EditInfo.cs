@@ -219,9 +219,8 @@ public class CDB_EditInfo : MonoBehaviour
     public void RemoveCandidate()
     {
         CDB_LaneEdit = CDB_ScaleChange.CandidateIDinQuestion[Convert.ToInt32(DeleteBtn.name)];
-        CDB_BuildUI.SpawnedLanes.RemoveAt(Convert.ToInt32(DeleteBtn.name));
-        Destroy(CDB_BuildUI.SpawnedLanes[Convert.ToInt32(DeleteBtn.name)]);
         Setting_SetupData.Candidates.RemoveAt(CDB_LaneEdit);
+        CBU.RefreshCandidatePanel();
     }
 
     private void Start()

@@ -17,7 +17,7 @@ public class CDB_BuildUI : MonoBehaviour
 
     public void GenerateDataLane(int lanes)
     {
-        for (int i = 1; i<= lanes; i++) 
+        for (int i = 1; i <= lanes; i++)
         {
             GameObject NewLane = Instantiate(DataLane, new Vector3(Header.transform.position.x, Header.transform.position.y, Header.transform.position.z), Quaternion.identity, Parent.transform);
             SpawnedLanes.Add(NewLane);
@@ -105,33 +105,16 @@ public class CDB_BuildUI : MonoBehaviour
         {
             CEI.AddCandidate("Pin Yang", 0, (GENERAL.LayerList.IndexOf(CDB_ScaleChange.viewscale)) + 1, CDB_ScaleChange.viewFLV, CDB_ScaleChange.viewSLV, 0.00, 0.00, 50.00, 50.00, 50.00);
         }
-        if (CDB_ScaleChange.viewscale == "National")
-        {
-            CSC.LoadL0Candidate();
-        }
-        if (CDB_ScaleChange.viewscale == GENERAL.LayerList[0])
-        {
-            CSC.LoadL1Candidate(CDB_ScaleChange.viewFLV);
-        }
-        if (CDB_ScaleChange.viewscale == GENERAL.LayerList[1])
-        {
-            CDB_ScaleChange.ShowData.Clear();
-            CDB_ScaleChange.CandidateIDinQuestion.Clear();
-            foreach (Candidate people in Setting_SetupData.Candidates)
-            {
-                if (people.SLayer == CDB_ScaleChange.viewSLV)
-                {
-                    if (people.FLayer == CDB_ScaleChange.viewFLV)
-                    {
-                        CDB_ScaleChange.ShowData.Add(people);
-                        CDB_ScaleChange.CandidateIDinQuestion.Add(Setting_SetupData.Candidates.IndexOf(people));
-                    }
-                }
-            }
-            DestroyDataLane();
-            GenerateDataLane(CDB_ScaleChange.ShowData.Count);
-            ShowLaneInfo(CDB_ScaleChange.ShowData);
-            CSC.LoadL2Candidate(CDB_ScaleChange.viewSLV, CDB_ScaleChange.viewFLV);
-        }
+        RefreshCandidatePanel();              
+    }
+    public void RefreshCandidatePanel()
+    {
+        List<Candidate> StringPassed = new List<Candidate>();
+        if (CDB_ScaleChange.viewscale == "National") { StringPassed = CSC.LoadL0Candidate(); }
+        if (CDB_ScaleChange.viewscale == GENERAL.LayerList[0]) { StringPassed = CSC.LoadL1Candidate(); }
+        if (CDB_ScaleChange.viewscale == GENERAL.LayerList[1]) { StringPassed = CSC.LoadL2Candidate(); }
+        DestroyDataLane();
+        GenerateDataLane(StringPassed.Count);
+        ShowLaneInfo(StringPassed);
     }
 }
