@@ -8006,20 +8006,11 @@ MonoBehaviour:
   SevenEF: {fileID: 0}
   EightEF: {fileID: 0}
   NineEF: {fileID: 0}
-  ZeroTX: {fileID: 0}
-  OneTX: {fileID: 0}
-  TwoTX: {fileID: 0}
-  ThreeTX: {fileID: 0}
-  FourTX: {fileID: 0}
-  FiveTX: {fileID: 0}
-  SixTX: {fileID: 0}
-  SevenTX: {fileID: 0}
-  EightTX: {fileID: 0}
-  NineTX: {fileID: 0}
   SD: {fileID: 0}
   CSC: {fileID: 0}
   CBU: {fileID: 0}
   DeleteBtn: {fileID: 0}
+  Mylane: {fileID: 0}
 --- !u!114 &4148156539678005549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8688,7 +8679,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.7264151, g: 0.02330006, b: 0.042551678, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -8709,7 +8700,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9108192966214338086}
+      - m_Target: {fileID: 8609527028575363017}
         m_TargetAssemblyTypeName: CDB_EditInfo, Assembly-CSharp
         m_MethodName: RemoveCandidate
         m_Mode: 1
@@ -8753,20 +8744,11 @@ MonoBehaviour:
   SevenEF: {fileID: 0}
   EightEF: {fileID: 0}
   NineEF: {fileID: 0}
-  ZeroTX: {fileID: 0}
-  OneTX: {fileID: 0}
-  TwoTX: {fileID: 0}
-  ThreeTX: {fileID: 0}
-  FourTX: {fileID: 0}
-  FiveTX: {fileID: 0}
-  SixTX: {fileID: 0}
-  SevenTX: {fileID: 0}
-  EightTX: {fileID: 0}
-  NineTX: {fileID: 0}
   SD: {fileID: 8691829382257381459}
   CSC: {fileID: 7070813906560257727}
   CBU: {fileID: 8833028250146541649}
   DeleteBtn: {fileID: 7019229651813554005}
+  Mylane: {fileID: 4923299510672384695}
 --- !u!114 &8833028250146541649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10815,6 +10797,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7503621041877507678}
     - target: {fileID: 6575623925092796562, guid: 6d97ede5a3d14ab49ad18e7f05539f94, type: 3}
+      propertyPath: Mylane
+      value: 
+      objectReference: {fileID: 4923299510672384695}
+    - target: {fileID: 6575623925092796562, guid: 6d97ede5a3d14ab49ad18e7f05539f94, type: 3}
       propertyPath: NineEF
       value: 
       objectReference: {fileID: 4923299510428145437}
@@ -10880,6 +10866,11 @@ PrefabInstance:
       objectReference: {fileID: 7019229651813554005}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d97ede5a3d14ab49ad18e7f05539f94, type: 3}
+--- !u!1 &1733427654809879049 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3761701329922463058, guid: 6d97ede5a3d14ab49ad18e7f05539f94, type: 3}
+  m_PrefabInstance: {fileID: 3186965417573521243}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4273828845607243407 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1690486592924309972, guid: 6d97ede5a3d14ab49ad18e7f05539f94, type: 3}
@@ -10907,11 +10898,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5768807c8d3f30c4baffd67ab7bf9088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1733427654809879049 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3761701329922463058, guid: 6d97ede5a3d14ab49ad18e7f05539f94, type: 3}
+--- !u!114 &1196735688848140325 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4368994037219196798, guid: 6d97ede5a3d14ab49ad18e7f05539f94, type: 3}
   m_PrefabInstance: {fileID: 3186965417573521243}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733427654809879049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c090a3f5687484f98da1a4dd5dabc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6679939097427683764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10928,6 +10925,6 @@ MonoBehaviour:
   Header: {fileID: 0}
   Parent: {fileID: 0}
   Temp: []
-  SC: {fileID: 0}
-  CEI: {fileID: 0}
-  CSC: {fileID: 0}
+  SC: {fileID: 1196735688848140325}
+  CEI: {fileID: 8609527028575363017}
+  CSC: {fileID: 3879273171824644153}
