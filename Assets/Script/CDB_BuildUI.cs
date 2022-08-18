@@ -65,7 +65,8 @@ public class CDB_BuildUI : MonoBehaviour
                 Enthusiasm.name = count.ToString();
                 Name.GetComponent<TMPro.TextMeshProUGUI>().text = listpassed[count].Name;
                 Party.GetComponent<TMPro.TextMeshProUGUI>().text = Setting_SetupData.Parties[listpassed[count].PartyID].Abbrv.ToString();
-                Race.GetComponent<TMPro.TextMeshProUGUI>().text = GENERAL.LayerList[listpassed[count].Layer-1].ToString(); 
+                if (listpassed[count].Layer == 0) { Race.GetComponent<TMPro.TextMeshProUGUI>().text = "NAT."; }
+                else { Race.GetComponent<TMPro.TextMeshProUGUI>().text = GENERAL.LayerList[listpassed[count].Layer - 1].ToString(); }
                 FirstLayer.GetComponent<TMPro.TextMeshProUGUI>().text = Setting_SetupData.FIRSTLVs[listpassed[count].FLayer].abbrv;
                 List<string> temp = new List<string>();
                 temp.Clear();
@@ -90,9 +91,7 @@ public class CDB_BuildUI : MonoBehaviour
         {
             for (int i = 0; i <= Setting_SetupData.SECONDLVs.Count - 1; i++)
             {
-                //CEI.AddCandidate("Pin Yang", 0, 0 , 999 ,999 , 0.00, 0.00, 50.00, 50.00, 50.00);
-                //999=> To State.
-                //CD=> State AVG.
+                CEI.AddCandidate("Pin Yang", 0, 0 , Setting_SetupData.SECONDLVs[i].FIRSTLV, Setting_SetupData.SECONDLVs[i].SUBID , 0.00, 0.00, 50.00, 50.00, 50.00);
             }
         }
         else if (CDB_ScaleChange.viewscale == GENERAL.LayerList[0])
