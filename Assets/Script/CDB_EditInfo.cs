@@ -206,6 +206,7 @@ public class CDB_EditInfo : MonoBehaviour
         A.Investment = Investment;
         A.Enthusiasm = Enthusiasm;
         Setting_SetupData.Candidates.Add(A);
+        SD.CalculateCandidateAVG();
     }
     public void RemoveCandidate()
     {

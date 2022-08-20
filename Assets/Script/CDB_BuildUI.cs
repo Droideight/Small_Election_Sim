@@ -109,6 +109,7 @@ public class CDB_BuildUI : MonoBehaviour
     }
     public void RefreshCandidatePanel()
     {
+        SC.CalculateCandidateAVG();
         List<Candidate> StringPassed = new List<Candidate>();
         if (CDB_ScaleChange.viewscale == "National") { StringPassed = CSC.LoadL0Candidate(); }
         if (CDB_ScaleChange.viewscale == GENERAL.LayerList[0]) { StringPassed = CSC.LoadL1Candidate(); }
