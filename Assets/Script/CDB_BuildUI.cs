@@ -87,27 +87,32 @@ public class CDB_BuildUI : MonoBehaviour
     }
     public void AddNewCandidateFromCDBBtn()
     {
+        int MaxID = 0;
+        foreach (Candidate a in Setting_SetupData.Candidates)
+        {
+            if (a.ID > MaxID) { MaxID = a.ID; }
+        }
         if (CDB_ScaleChange.viewscale == "National")
         {
             for (int i = 0; i <= Setting_SetupData.SECONDLVs.Count - 1; i++)
             {
-                CEI.AddCandidate("Pin Yang", 0, 0 , Setting_SetupData.SECONDLVs[i].FIRSTLV, Setting_SetupData.SECONDLVs[i].SUBID , 0.00, 0.00, 50.00, 50.00, 50.00);
+                CEI.AddCandidate("Pin Yang", 0, 0 , Setting_SetupData.SECONDLVs[i].FIRSTLV, Setting_SetupData.SECONDLVs[i].SUBID , 0.00, 0.00, 50.00, 50.00, 50.00, MaxID+1);
             }
         }
         else if (CDB_ScaleChange.viewscale == GENERAL.LayerList[0])
         {
             for (int i = 0; i <= Setting_SetupData.FIRSTLVs[CDB_ScaleChange.viewFLV].SECLV-1; i++)
             {
-                CEI.AddCandidate("Pin Yang", 0, (GENERAL.LayerList.IndexOf(CDB_ScaleChange.viewscale)) + 1, CDB_ScaleChange.viewFLV, i, 0.00, 0.00, 50.00, 50.00, 50.00);
+                CEI.AddCandidate("Pin Yang", 0, (GENERAL.LayerList.IndexOf(CDB_ScaleChange.viewscale)) + 1, CDB_ScaleChange.viewFLV, i, 0.00, 0.00, 50.00, 50.00, 50.00, MaxID + 1);
             }
         }
         else if (CDB_ScaleChange.viewscale == GENERAL.LayerList[1])
         {
-            CEI.AddCandidate("Pin Yang", 0, (GENERAL.LayerList.IndexOf(CDB_ScaleChange.viewscale)) + 1, CDB_ScaleChange.viewFLV, CDB_ScaleChange.viewSLV, 0.00, 0.00, 50.00, 50.00, 50.00);
+            CEI.AddCandidate("Pin Yang", 0, (GENERAL.LayerList.IndexOf(CDB_ScaleChange.viewscale)) + 1, CDB_ScaleChange.viewFLV, CDB_ScaleChange.viewSLV, 0.00, 0.00, 50.00, 50.00, 50.00, MaxID + 1);
         }
         RefreshCandidatePanel();              
     }
-    public void RefreshCandidatePanel()
+    public void RefreshCandidatePanel() //not properly worked
     {
         SC.CalculateCandidateAVG();
         List<Candidate> StringPassed = new List<Candidate>();

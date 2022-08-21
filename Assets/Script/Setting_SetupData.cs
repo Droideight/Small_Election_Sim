@@ -184,68 +184,86 @@ public class Setting_SetupData : MonoBehaviour
     public void CalculateCandidateAVG()
     {
         int MaxID = 0;
+        //State List
+        List<double> POLLPCT1 = new List<double>();
+        List<double> EVPCT1 = new List<double>();
+        List<double> QUALITY1 = new List<double>();
+        List<double> INVEST1 = new List<double>();
+        List<double> ENTHUSIASM1 = new List<double>();
+        //National List
+        List<double> POLLPCT0 = new List<double>();
+        List<double> EVPCT0 = new List<double>();
+        List<double> QUALITY0 = new List<double>();
+        List<double> INVEST0 = new List<double>();
+        List<double> ENTHUSIASM0 = new List<double>();
+        //Modifying Area
+        List<double> POPULATION = new List<double>();
+        List<double> VTP = new List<double>();
+        List<double> POPVTP = new List<double>();
+        List<int> CANBEXAM = new List<int>();
+        int k = 0;
+        double POLLPCT = 0;
+        double EVPCT = 0;
+        double QUALITY = 0;
+        double INVEST = 0;
+        double ENTHUSIASM = 0;
+        int Serial = 0;
         foreach (Candidate a in Candidates) 
         { 
             if (a.ID > MaxID) { MaxID = a.ID; }
         }
-        for (int i = 0; i <= MaxID; i++)
+        for (int i = 0; i <= MaxID; i++) //GOING THROUGH ALL IDs
         {
-            //State List
-            List<double> POLLPCT1 = new List<double>();
-            List<double> EVPCT1 = new List<double>();
-            List<double> QUALITY1 = new List<double>();
-            List<double> INVEST1 = new List<double>();
-            List<double> ENTHUSIASM1 = new List<double>();
-            //National List
-            List<double> POLLPCT0 = new List<double>();
-            List<double> EVPCT0 = new List<double>();
-            List<double> QUALITY0 = new List<double>();
-            List<double> INVEST0 = new List<double>();
-            List<double> ENTHUSIASM0 = new List<double>();
-            //Modifying Area
-            List<double> POPULATION = new List<double>();
-            List<double> VTP = new List<double>();
-            List<double> POPVTP = new List<double>();
-            List<int> CANBEXAM = new List<int>();
-            int k = 0;
-            double POLLPCT = 0;
-            double EVPCT = 0;
-            double QUALITY = 0;
-            double INVEST = 0;
-            double ENTHUSIASM = 0;
-            int Serial = 0;
+            //FIND TARGET ID
+            CANBEXAM.Clear();
             foreach (Candidate CandBeExam in Candidates)
             {
                 CANBEXAM.Add(CandBeExam.ID);
             }
             Serial = CANBEXAM.LastIndexOf(i);
+            //
+            //IF TARGET ID IS A NATIONAL CANDIDATE
             if (Candidates[Serial].Layer == 0)
             {
+                POLLPCT0.Clear();
+                EVPCT0.Clear();
+                QUALITY0.Clear();
+                INVEST0.Clear();
+                ENTHUSIASM0.Clear();
+                POPULATION.Clear();
+                VTP.Clear();
+                POPVTP.Clear();
+                POLLPCT = 0;
+                EVPCT = 0;
+                QUALITY = 0;
+                INVEST = 0;
+                ENTHUSIASM = 0;
+                k = 0;
+                foreach (SECLV A in SECONDLVs)
+                {
+                    POPULATION.Add(A.Population);
+                    VTP.Add(A.VTP);
+                }
+                for (int l = 0; l < POPULATION.Count; l++) //Calculate voting bloc
+                {
+                    POPVTP.Add(POPULATION[l] * VTP[l]);
+                }
                 foreach (Candidate CandBeSearched in Candidates) // check all entry that has the ID
                 {
-                    if (CandBeSearched.ID == i) // if an entity belongs to a candidate
+                    if (CandBeSearched.ID == i) // if an entity belongs to a candidate, then add
                     {
                         POLLPCT0.Add(CandBeSearched.PollPCT);
                         EVPCT0.Add(CandBeSearched.EVPCT);
                         QUALITY0.Add(CandBeSearched.Quality);
                         INVEST0.Add(CandBeSearched.Investment);
                         ENTHUSIASM0.Add(CandBeSearched.Enthusiasm);
-                        foreach (SECLV A in SECONDLVs)
-                        {
-                            POPULATION.Add(A.Population);
-                            VTP.Add(A.VTP);
-                        }
-                    }
+                    }                           
                 }
                 //NAT: Computing Result
                 foreach (double entry in POLLPCT0) //Aggregate ALL entries
                 {
                     POLLPCT += entry * POPULATION[k] * VTP[k];
                     k++;
-                }
-                for (int l = 0; l < POPULATION.Count; l++) //Calculate voting bloc
-                {
-                    POPVTP.Add(POPULATION[l] * VTP[l]);
                 }
                 POLLPCT /= POPVTP.Sum();
                 k = 0;
@@ -254,22 +272,12 @@ public class Setting_SetupData : MonoBehaviour
                     EVPCT += entry * POPULATION[k] * VTP[k];
                     k++;
                 }
-                POPVTP.Clear();
-                for (int l = 0; l < POPULATION.Count; l++)
-                {
-                    POPVTP.Add(POPULATION[l] * VTP[l]);
-                }
                 EVPCT /= POPVTP.Sum();
                 k = 0;
                 foreach (double entry in QUALITY0)
                 {
                     QUALITY += entry * POPULATION[k] * VTP[k];
                     k++;
-                }
-                POPVTP.Clear();
-                for (int l = 0; l < POPULATION.Count; l++)
-                {
-                    POPVTP.Add(POPULATION[l] * VTP[l]);
                 }
                 QUALITY /= POPVTP.Sum();
                 k = 0;
@@ -278,22 +286,12 @@ public class Setting_SetupData : MonoBehaviour
                     INVEST += entry * POPULATION[k] * VTP[k];
                     k++;
                 }
-                POPVTP.Clear();
-                for (int l = 0; l < POPULATION.Count; l++)
-                {
-                    POPVTP.Add(POPULATION[l] * VTP[l]);
-                }
                 INVEST /= POPVTP.Sum();
                 k = 0;
                 foreach (double entry in ENTHUSIASM0)
                 {
                     ENTHUSIASM += entry * POPULATION[k] * VTP[k];
                     k++;
-                }
-                POPVTP.Clear();
-                for (int l = 0; l < POPULATION.Count; l++)
-                {
-                    POPVTP.Add(POPULATION[l] * VTP[l]);
                 }
                 ENTHUSIASM /= POPVTP.Sum();
                 k = 0;
@@ -312,120 +310,105 @@ public class Setting_SetupData : MonoBehaviour
             }
             else if (Candidates[Serial].Layer == 1)
             {
-                for (int j = 0; j < FIRSTLVs.Count; j++) //check all states
+                POLLPCT1.Clear();
+                EVPCT1.Clear();
+                QUALITY1.Clear();
+                INVEST1.Clear();
+                ENTHUSIASM1.Clear();
+                POPULATION.Clear();
+                VTP.Clear();
+                POPVTP.Clear();
+                POLLPCT = 0;
+                EVPCT = 0;
+                QUALITY = 0;
+                INVEST = 0;
+                ENTHUSIASM = 0;
+                k = 0;
+                foreach (Candidate CandBeSearched in Candidates) // check all entry that has the ID
                 {
-                    foreach (Candidate CandBeSearched in Candidates) // check all entry that has the ID
+                    //Gathering DataList
+                    if (CandBeSearched.FLayer == Candidates[Serial].FLayer) //if an entity is from a state
                     {
-                        //Gathering DataList
-                        if (CandBeSearched.FLayer == j) //if an entity is from a state
+                        if (CandBeSearched.ID == i) // if an entity belongs to a candidate
                         {
-                            if (CandBeSearched.ID == i) // if an entity belongs to a candidate
+                            POLLPCT1.Add(CandBeSearched.PollPCT);
+                            EVPCT1.Add(CandBeSearched.EVPCT);
+                            QUALITY1.Add(CandBeSearched.Quality);
+                            INVEST1.Add(CandBeSearched.Investment);
+                            ENTHUSIASM1.Add(CandBeSearched.Enthusiasm);
+                            int NO = 0;
+                            foreach (SECLV A in SECONDLVs)
                             {
-                                POLLPCT1.Add(CandBeSearched.PollPCT);
-                                EVPCT1.Add(CandBeSearched.EVPCT);
-                                QUALITY1.Add(CandBeSearched.Quality);
-                                INVEST1.Add(CandBeSearched.Investment);
-                                ENTHUSIASM1.Add(CandBeSearched.Enthusiasm);
-                                int NO = 0;
-                                foreach (SECLV A in SECONDLVs)
+                                if (A.FIRSTLV == Candidates[Serial].FLayer)
                                 {
-                                    if (A.FIRSTLV == j)
-                                    {
-                                        if (A.SUBID == CandBeSearched.SLayer) Serial = SECONDLVs.IndexOf(A);
-                                    }
-                                }
-                                POPULATION.Add(SECONDLVs[Serial].Population);
-                                VTP.Add(SECONDLVs[Serial].VTP);
-                            }
-                        }
-                        //Computing Result
-                        k = 0;
-                        POLLPCT = 0;
-                        EVPCT = 0;
-                        QUALITY = 0;
-                        INVEST = 0;
-                        ENTHUSIASM = 0;
-                        foreach (double entry in POLLPCT1)
-                        {
-                            POLLPCT += entry * POPULATION[k] * VTP[k];
-                            k++;
-                        }
-                        POPVTP.Clear();
-                        for (int l = 0; l < POPULATION.Count; l++)
-                        {
-                            POPVTP.Add(POPULATION[l] * VTP[l]);
-                        }
-                        POLLPCT /= POPVTP.Sum();
-                        k = 0;
-                        foreach (double entry in EVPCT1)
-                        {
-                            EVPCT += entry * POPULATION[k] * VTP[k];
-                            k++;
-                        }
-                        POPVTP.Clear();
-                        for (int l = 0; l < POPULATION.Count; l++)
-                        {
-                            POPVTP.Add(POPULATION[l] * VTP[l]);
-                        }
-                        EVPCT /= POPVTP.Sum();
-                        k = 0;
-                        foreach (double entry in QUALITY1)
-                        {
-                            QUALITY += entry * POPULATION[k] * VTP[k];
-                            k++;
-                        }
-                        POPVTP.Clear();
-                        for (int l = 0; l < POPULATION.Count; l++)
-                        {
-                            POPVTP.Add(POPULATION[l] * VTP[l]);
-                        }
-                        QUALITY /= POPVTP.Sum();
-                        k = 0;
-                        foreach (double entry in INVEST1)
-                        {
-                            INVEST += entry * POPULATION[k] * VTP[k];
-                            k++;
-                        }
-                        POPVTP.Clear();
-                        for (int l = 0; l < POPULATION.Count; l++)
-                        {
-                            POPVTP.Add(POPULATION[l] * VTP[l]);
-                        }
-                        INVEST /= POPVTP.Sum();
-                        k = 0;
-                        foreach (double entry in ENTHUSIASM1)
-                        {
-                            ENTHUSIASM += entry * POPULATION[k] * VTP[k];
-                            k++;
-                        }
-                        POPVTP.Clear();
-                        for (int l = 0; l < POPULATION.Count; l++)
-                        {
-                            POPVTP.Add(POPULATION[l] * VTP[l]);
-                        }
-                        ENTHUSIASM /= POPVTP.Sum();
-                        k = 0;
-                        //Write Result in singular state
-                        foreach (Candidate a in Candidates)
-                        {
-                            if (a.ID == i)
-                            {
-                                if (a.FLayer == j)
-                                {
-                                    a.PollPCT1 = POLLPCT;
-                                    a.EVPCT1 = EVPCT;
-                                    a.Quality1 = QUALITY;
-                                    a.Investment1 = INVEST;
-                                    a.Enthusiasm1 = ENTHUSIASM;
+                                    if (A.SUBID == CandBeSearched.SLayer) NO = SECONDLVs.IndexOf(A);
                                 }
                             }
+                            POPULATION.Add(SECONDLVs[NO].Population);
+                            VTP.Add(SECONDLVs[NO].VTP);
                         }
+                    }                    
+                }
+                //Computing Result
+                foreach (double entry in POLLPCT1)
+                {
+                    POLLPCT += entry * POPULATION[k] * VTP[k];
+                    k++;
+                }
+                for (int l = 0; l < POPULATION.Count; l++)
+                {
+                    POPVTP.Add(POPULATION[l] * VTP[l]);
+                }
+                POLLPCT /= POPVTP.Sum();
+                k = 0;
+                foreach (double entry in EVPCT1)
+                {
+                    EVPCT += entry * POPULATION[k] * VTP[k];
+                    k++;
+                }
+                EVPCT /= POPVTP.Sum();
+                k = 0;
+                foreach (double entry in QUALITY1)
+                {
+                    QUALITY += entry * POPULATION[k] * VTP[k];
+                    k++;
+                }
+                QUALITY /= POPVTP.Sum();
+                k = 0;
+                foreach (double entry in INVEST1)
+                {
+                    INVEST += entry * POPULATION[k] * VTP[k];
+                    k++;
+                }
+                INVEST /= POPVTP.Sum();
+                k = 0;
+                foreach (double entry in ENTHUSIASM1)
+                {
+                    ENTHUSIASM += entry * POPULATION[k] * VTP[k];
+                    k++;
+                }
+                ENTHUSIASM /= POPVTP.Sum();
+                k = 0;
+                //Write Result in singular state
+                foreach (Candidate a in Candidates)
+                {
+                    if (a.ID == i)
+                    {
+                        a.PollPCT1 = POLLPCT;
+                        a.EVPCT1 = EVPCT;
+                        a.Quality1 = QUALITY;
+                        a.Investment1 = INVEST;
+                        a.Enthusiasm1 = ENTHUSIASM;
                     }
                 }
             }
             //Current Issue: Candidate's entry has to be sorted to work
         }
-        Debug.Log(Candidates[0].Investment1);
+    }
+    public void SortCandidateByID()
+    {
+        List<Candidate> Sorted = Candidates.OrderBy(x => x.FLayer).ThenBy(x => x.SLayer).ThenBy(x => x.ID).ToList();
+        Candidates = Sorted;
     }
     public void WriteCandidate(string filepath, int variI, string variS, int varno) 
     {

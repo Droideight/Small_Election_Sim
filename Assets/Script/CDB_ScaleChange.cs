@@ -163,6 +163,8 @@ public class CDB_ScaleChange : MonoBehaviour
     }
     public List<Candidate> LoadL0Candidate() 
     {
+        ShowData.Clear();
+        CandidateIDinQuestion.Clear();
         foreach (Candidate people in Setting_SetupData.Candidates)
         {
             if (people.Layer == 0)

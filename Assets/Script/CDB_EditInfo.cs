@@ -192,7 +192,7 @@ public class CDB_EditInfo : MonoBehaviour
         }
     }
     public void AddCandidate(string name, int partyID, int layer, int Flayer, int Slayer, double PollPCT,
-        double EVPCT, double Quality, double Investment, double Enthusiasm) 
+        double EVPCT, double Quality, double Investment, double Enthusiasm, int ID) 
     {
         Candidate A = new Candidate();
         A.Name = name;
@@ -205,6 +205,7 @@ public class CDB_EditInfo : MonoBehaviour
         A.Quality = Quality;
         A.Investment = Investment;
         A.Enthusiasm = Enthusiasm;
+        A.ID = ID;
         Setting_SetupData.Candidates.Add(A);
         SD.CalculateCandidateAVG();
     }
