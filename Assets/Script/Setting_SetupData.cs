@@ -107,7 +107,7 @@ public class Setting_SetupData : MonoBehaviour
     }
     public void LoadCandidate(string filepath)
     {
-        string[] lines = new string[10000];
+        string[] lines = new string[100000];
         lines = File.ReadAllLines(filepath);
         for (int i = 5; i <= 1000; i++)
         {
@@ -409,10 +409,39 @@ public class Setting_SetupData : MonoBehaviour
     {
         List<Candidate> Sorted = Candidates.OrderBy(x => x.FLayer).ThenBy(x => x.SLayer).ThenBy(x => x.ID).ToList();
         Candidates = Sorted;
+        Sorted.Clear();
     }
-    public void WriteCandidate(string filepath, int variI, string variS, int varno) 
+    public void WriteCandidate(string filepath) //需要補寫上candidate,party QTY求法
     {
-        
+        if (filepath == "-1") filepath = GENERAL.CandidateFilePath;
+        string[] lines = new string[100000];
+        GENERAL.PartyQTY = Parties.Count();
+        GENERAL.CandidateQTY = Candidates.Count();
+        //Static Areas
+        lines[0] = "//Candidate List Name:";
+        lines[1] = GENERAL.CandidateListName;
+        lines[2] = "=== ...===";
+        lines[3] = "//Party Info";
+        lines[4] = "ID/Name/Abbrv./People/Color";
+        lines[5 + GENERAL.PartyQTY] = "999 / Others / O / Others /#F5F5F5";
+        lines[6 + GENERAL.PartyQTY] = "=== ...===";
+        lines[7 + GENERAL.PartyQTY] = "//Candidate Info";
+        lines[8 + GENERAL.PartyQTY] = "ID/Name/PartyID/Layer(0~2)";
+        lines[9 + GENERAL.PartyQTY] = "FirstLayer/SubLayer/POLLPCT/EVPCT/QUALITY/INVESTMENT/ENTHUSIASM";
+        //Changing Areas
+        for (int i = 5; i <= 4+ GENERAL.PartyQTY; i++)
+        {
+            lines[i] = Parties[i - 5].PartyID + "/" + Parties[i - 5].Name + "/" + Parties[i - 5].Abbrv + "/" + Parties[i - 5].People + "/" + Parties[i - 5].Color;
+        }
+        for (int i = 10+GENERAL.PartyQTY; i <= (9 + GENERAL.PartyQTY)+3*GENERAL.CandidateQTY; i = i+3)
+        {
+            int editinglane = (i - 10 - GENERAL.PartyQTY) / 3;
+            lines[i] = "---";
+            lines[i + 1] = Candidates[editinglane].ID + "/" + Candidates[editinglane].Name + "/" + Candidates[editinglane].PartyID + "/" + Candidates[editinglane].Layer;
+            lines[i + 2] = Candidates[editinglane].FLayer + "/" + Candidates[editinglane].SLayer + "/" + Candidates[editinglane].PollPCT + "/" + Candidates[editinglane].EVPCT 
+                + "/" + Candidates[editinglane].Quality + "/" + Candidates[editinglane].Investment + "/" + Candidates[editinglane].Enthusiasm;
+        }
+        File.WriteAllLines(filepath, lines);
     }
 }
 public class SECLV
@@ -497,6 +526,8 @@ public static class GENERAL
  {
     public static string MapFilePath = @"C:\Users\Pin\Desktop\Unity Election Simulator\Small_Election_Sim\Assets\Datas\Map_Example.txt";
     public static string CandidateFilePath = @"C:\Users\Pin\Desktop\Unity Election Simulator\Small_Election_Sim\Assets\Datas\Candidate_Example.txt";
+    public static string CandidateListName = "Example List"; //Did not read into system yet
+    public static string MapListName = "Example Map";
     public static string NationName;
     public static int MapX;
     public static int MapY;
